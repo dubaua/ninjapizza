@@ -1,16 +1,16 @@
 <template lang="pug">
   div
-    | Cart
+    | Cart {{total}}
 </template>
 
 <script>
 export default {
   name: 'Cart',
-  // data() {
-  //   return {
-  //     msg: 'Welcome to Your Vue.js App',
-  //   };
-  // },
+  computed: {
+    total() {
+      return this.$store.getters.totalPrice;
+    },
+  },
 };
 </script>
 

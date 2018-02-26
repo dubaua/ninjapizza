@@ -17,6 +17,13 @@ module.exports = {
           '^/api': '/api',
         },
       },
+      '/storage': {
+        target: 'http://ninjapizza.dubaua.ru/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/storage': '/storage',
+        },
+      },
     },
 
     // Various Dev Server settings

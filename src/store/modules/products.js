@@ -11,8 +11,10 @@ const state = {
 
 // getters
 const getters = {
-  getProductByKey: state => key => state[key],
+  getProductsByKey: state => key => state[key],
 };
+
+// here we can inject cart state to products
 
 // actions
 const actions = {

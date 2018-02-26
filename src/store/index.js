@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import cart from './modules/cart';
 import products from './modules/products';
 import banners from './modules/banners';
+import cart from './modules/cart';
 
 Vue.use(Vuex);
 
@@ -10,10 +10,9 @@ const debug = process.env.NODE_ENV !== 'production';
 
 const store = new Vuex.Store({
   modules: {
-    // cart,
     products,
     banners,
-    // TODO move banners
+    cart,
   },
   strict: debug,
 });
