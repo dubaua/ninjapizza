@@ -1,4 +1,9 @@
 import api from '@/api/';
+import { schema, normalize } from 'normalizr';
+
+const product = new schema.Entity('products', {}, { idAttribute: '_id' });
+const arrayOfProducts = [product];
+
 /* eslint-disable */
 
 const state = {
@@ -26,7 +31,11 @@ const actions = {
 // mutations
 const mutations = {
   setProducts(state, { products, key }) {
-    state[key] = products;
+    state[key] = normalize(products, arrayOfProducts).entities.products;
+  },
+  toggleVersion(state, { key, _id }) {
+    console.log(state, key, id);
+    // get by key and id and toggle vesion
   },
 };
 

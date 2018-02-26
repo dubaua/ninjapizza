@@ -2,7 +2,7 @@
   div
     | Products
     template(v-for="card in products")
-      card(:card="card")
+      card(:product="card")
 </template>
 
 <script>
@@ -19,8 +19,8 @@ export default {
     },
     products() {
       return this.$store.state.products[this.currentProduct];
-    }
-  }
+    },
+  },
 };
 </script>
 
