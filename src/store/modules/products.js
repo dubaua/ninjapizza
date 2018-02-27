@@ -4,7 +4,7 @@ import { schema, normalize } from 'normalizr';
 const product = new schema.Entity('products', {}, { idAttribute: '_id' });
 const arrayOfProducts = [product];
 
-/* eslint-disable */
+/* eslint-disable no-shadow, no-return-assign, no-param-reassign */
 
 const state = {
   pizza: null,
@@ -33,9 +33,10 @@ const mutations = {
   setProducts(state, { products, key }) {
     state[key] = normalize(products, arrayOfProducts).entities.products;
   },
-  toggleVersion(state, { key, _id }) {
-    console.log(state, key, id);
-    // get by key and id and toggle vesion
+  setVersion(state, { product, productId, versionIndex }) {
+    state[product][productId].versions.map(
+      version => (version.isChosen = version.id === versionIndex),
+    );
   },
 };
 

@@ -5,20 +5,24 @@
       img(:src="product.photo.path", :alt="product.title")
     .card__description(v-html="product.description")
     .card__versions
-      template(v-for="version in product.versions")
-        .card__version
-          input(type="radio")
+      template(v-for="(version, index) in product.versions")
+        .card__version(@click="setVersion(index, version.isChosen)")
+          radio(:value="version.isChosen")
           .card__measure {{version.measure}}
-          .card__price {{version.price}} Rub
+          .card__price {{version.price}} ₽
     button(@click="addToCart(product)") order
 
 </template>
 
 <script>
 import { mapMutations } from 'vuex';
+import Radio from '@/components/ui/Radio';
 
 export default {
   name: 'Card',
+  components: {
+    Radio,
+  },
   props: {
     product: Object,
   },
@@ -30,8 +34,17 @@ export default {
   methods: {
     ...mapMutations([
       'addToCart',
-      'toggleVersion',
     ]),
+    setVersion(index, currentValue) {
+      if (!currentValue) {
+        this.$store.commit('setVersion', {
+          product: this.currentProduct,
+          // eslint-disable-next-line
+          productId: this.product._id,
+          versionIndex: index,
+        });
+      }
+    },
   },
 };
 </script>
@@ -63,6 +76,7 @@ export default {
 
   &__version {
     display: flex;
+    cursor: pointer;
   }
 
   &__measure {

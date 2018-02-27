@@ -2,10 +2,10 @@
 const prepareProduct = product => ({
   ...product,
   versions: product.versions.map((version, index) => ({
+    id: index,
     measure: version.value.measure,
     price: version.value.price,
     isChosen: index === 0,
-    amount: 0,
   })),
   isInCart: false,
 });
