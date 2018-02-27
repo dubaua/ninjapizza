@@ -11,17 +11,18 @@ const actions = {};
 
 // mutations
 const mutations = {
-  addToCart(state, product) {
-    // add amount
+  addToCart(state, incomingProduct) {
+    // check if already in cart => incrementAmount
+    if (state.filter(product => product._id === incomingProduct._id)) {
+      console.log('so product have same id. check for version')
+    }
+    // check if product have versions
     const processedProduct = {
       ...product,
-      amount: 1,
-      // rework price
-      price: product.versions
-        ? product.versions.find(version => version.isChosen).value.price
-        : product.price,
+      amount: product.versions ? null : 1,
+      price: product.versions ? null : product.price,
     };
-    // check if already in cart => incrementAmount
+
     // state = [...state, processedProduct];
     state.push(processedProduct);
   },

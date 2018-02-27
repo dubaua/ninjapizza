@@ -8,8 +8,8 @@
       template(v-for="version in product.versions")
         .card__version
           input(type="radio")
-          .card__measure {{version.value.measure}}
-          .card__price {{version.value.price}} Rub
+          .card__measure {{version.measure}}
+          .card__price {{version.price}} Rub
     button(@click="addToCart(product)") order
 
 </template>
