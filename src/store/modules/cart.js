@@ -31,28 +31,25 @@ const actions = {};
 // mutations
 const mutations = {
   addToCart(state, product) {
-    // check if already in cart => incrementAmount
+    // check if already in cart => changeAmount
     const newProduct = createProduct(product);
     if (getProductIndex(newProduct.cartId) !== -1) {
       // TODO convert to action
-      store.commit('incrementAmount', newProduct.cartId);
+      store.commit('changeAmount', { cartId: newProduct.cartId, modifier: 1 });
     } else {
       // add to cart
       state.push(newProduct);
     }
   },
-  incrementAmount(state, cartId) {
-    const amount = getProduct(cartId).amount;
-    getProduct(cartId).amount = amount + 1;
-  },
-  decrementAmount(state, cartId) {
-    const amount = getProduct(cartId).amount;
-    if (amount === 1) {
-      const index = getProductIndex(cartId);
-      state.splice(index, 1);
-    } else {
-      getProduct(cartId).amount = amount - 1;
-    }
+  changeAmount(state, { cartId, modifier }) {
+    getProduct(cartId).amount += modifier;
+    // const amount = getProduct(cartId).amount;
+    // if (amount === -modifier) {
+    //   const index = getProductIndex(cartId);
+    //   state.splice(index, 1);
+    // } else {
+    //   getProduct(cartId).amount += modifier;
+    // }
   },
 };
 

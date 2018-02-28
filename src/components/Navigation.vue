@@ -1,6 +1,10 @@
 <template lang="pug">
   div
-    | Navigation
+    router-link(to="/") pizza
+    router-link(to="/desserts") desserts
+    router-link(to="/drinks") drinks
+    router-link(to="/salad") salad
+    router-link(to="/snack") snack
 </template>
 
 <script>

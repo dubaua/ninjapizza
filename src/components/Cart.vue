@@ -1,18 +1,16 @@
 <template lang="pug">
   div
     | Cart {{totalPrice}}
-    template(v-for="position in cart")
+    template(v-for="position in cart", v-if="position.amount > 0")
       .position
-        template(v-if="position.amount > 0")
-          span {{position.title}}
-          span
-            button(@click="decrementAmount(position.cartId)") -
-            | {{position.amount}}
-            button(@click="incrementAmount(position.cartId)") +
-            | &times; {{position.price}} ₽
-        template(v-else)
-          span {{position.title}}
-          span {{position.price}} ₽
+        span {{position.title}}
+        span
+          button(@click="changeAmount({ cartId: position.cartId, modifier: -1})") -
+          | {{position.amount}}
+          button(@click="changeAmount({ cartId: position.cartId, modifier: 1})") +
+          | &times; {{position.price}} ₽
+          button(
+            @click="changeAmount({ cartId: position.cartId, modifier: -position.amount})") &times;
 </template>
 
 <script>
@@ -25,7 +23,7 @@ export default {
     ...mapState(['cart']),
   },
   methods: {
-    ...mapMutations(['incrementAmount', 'decrementAmount']),
+    ...mapMutations(['changeAmount']),
   },
 };
 </script>
