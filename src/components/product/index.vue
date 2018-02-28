@@ -1,7 +1,6 @@
 <template lang="pug">
-  div
-    | Products
-    template(v-for="card in products")
+  .products
+    .products__card(v-for="card in products")
       card(:product="card")
 </template>
 
@@ -24,6 +23,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.products {
+  display: flex;
+  flex-wrap: wrap;
 
+  &__card {
+    max-width: 25%;
+    flex-basis: 25%;
+  }
+}
 </style>

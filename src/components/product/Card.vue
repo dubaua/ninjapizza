@@ -4,12 +4,18 @@
     .card__preview
       img(:src="product.photo.path", :alt="product.title")
     .card__description(v-html="product.description")
-    .card__versions
-      template(v-for="(version, index) in product.versions")
+    template(v-if="isSimpleProduct")
+      .card__properties
+        .card__measure {{product.measure}}
+        .card__price {{product.price}} ₽
+    template(v-else, v-for="(version, index) in product.versions")
+      .card__versions
         .card__version(@click="setVersion(index, version.isChosen)")
           radio(:value="version.isChosen")
-          .card__measure {{version.measure}}
-          .card__price {{version.price}} ₽
+          .card__properties
+            .card__measure {{version.measure}}
+            .card__price {{version.price}} ₽
+
     button(@click="addToCart(product)") order
 
 </template>
@@ -27,6 +33,9 @@ export default {
     product: Object,
   },
   computed: {
+    isSimpleProduct() {
+      return typeof this.product.versions === 'undefined';
+    },
     currentProduct() {
       return this.$route.params.productId || 'pizza';
     },
@@ -51,7 +60,6 @@ export default {
 
 <style lang="scss">
 .card {
-  padding: 16px;
 
   &__title {
     font-weight: bold;
@@ -75,8 +83,14 @@ export default {
   }
 
   &__version {
-    display: flex;
     cursor: pointer;
+    display: flex;
+  }
+
+  &__properties {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__measure {

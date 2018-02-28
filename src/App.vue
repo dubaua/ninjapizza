@@ -4,12 +4,12 @@
       <logo/>
       <info/>
       <navigation/>
-      <cart/>
     </aside>
     <section>
       <banners/>
       <product/>
     </section>
+    <cart/>
   </div>
 </template>
 

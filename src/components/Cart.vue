@@ -1,6 +1,5 @@
 <template lang="pug">
   div
-    | Cart {{totalPrice}}
     template(v-for="position in cart", v-if="position.amount > 0")
       .position
         span {{position.title}}
@@ -11,6 +10,7 @@
           | &times; {{position.price}} ₽
           button(
             @click="changeAmount({ cartId: position.cartId, modifier: -position.amount})") &times;
+    | Total {{totalPrice}} ₽
 </template>
 
 <script>
