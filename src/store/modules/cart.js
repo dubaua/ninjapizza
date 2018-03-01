@@ -1,5 +1,4 @@
 import store from '@/store/';
-
 /* eslint-disable no-shadow, no-mixed-operators, no-underscore-dangle */
 
 const state = [];
@@ -22,7 +21,7 @@ const createProduct = p => ({
 // getters
 const getters = {
   totalPrice: state => state.reduce((sum, product) => sum + product.price * product.amount, 0),
-  isInCart: state => id => state.filter(p => p._id === id) > 0,
+  isInCart: state => id => state.filter(p => p._id === id && p.amount > 0).length > 0,
 };
 
 // actions

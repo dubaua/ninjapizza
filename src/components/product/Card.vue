@@ -4,6 +4,7 @@
     .card__preview
       img(:src="product.photo.path", :alt="product.title")
     .card__description(v-html="product.description")
+    | isInCart = {{isInCart}}
     template(v-if="isSimpleProduct")
       .card__properties
         .card__measure {{product.measure}}
@@ -24,6 +25,8 @@
 import { mapMutations } from 'vuex';
 import Radio from '@/components/ui/Radio';
 
+/* eslint-disable no-underscore-dangle */
+
 export default {
   name: 'Card',
   components: {
@@ -39,6 +42,9 @@ export default {
     currentProduct() {
       return this.$route.params.productId || 'pizza';
     },
+    isInCart() {
+      return this.$store.getters.isInCart(this.product._id);
+    },
   },
   methods: {
     ...mapMutations([
@@ -48,7 +54,6 @@ export default {
       if (!currentValue) {
         this.$store.commit('setVersion', {
           product: this.currentProduct,
-          // eslint-disable-next-line
           productId: this.product._id,
           versionIndex: index,
         });
@@ -60,7 +65,6 @@ export default {
 
 <style lang="scss">
 .card {
-
   &__title {
     font-weight: bold;
   }

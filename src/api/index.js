@@ -11,7 +11,6 @@ const prepareProduct = (product) => {
       price: version.value.price,
       isChosen: index === 0,
     })),
-    isInCart: false,
   };
 };
 

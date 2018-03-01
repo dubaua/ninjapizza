@@ -19,8 +19,6 @@ const getters = {
   getProductsByKey: state => key => state[key],
 };
 
-// here we can inject cart state to products
-
 // actions
 const actions = {
   fetchProductsByKey({ commit }, key) {
