@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    template(v-for="position in cart", v-if="position.amount > 0")
+    template(v-for="position in cart", v-if="position.amount !== 0")
       .position
         span {{position.title}}
         span
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Cart',
@@ -23,7 +23,7 @@ export default {
     ...mapState(['cart']),
   },
   methods: {
-    ...mapMutations(['changeAmount']),
+    ...mapActions(['changeAmount']),
   },
 };
 </script>

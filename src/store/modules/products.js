@@ -31,10 +31,8 @@ const mutations = {
   setProducts(state, { products, key }) {
     state[key] = normalize(products, arrayOfProducts).entities.products;
   },
-  setVersion(state, { product, productId, versionIndex }) {
-    state[product][productId].versions.map(
-      version => (version.isChosen = version.id === versionIndex),
-    );
+  setVersion(state, { product, productId, versionId }) {
+    state[product][productId].chosenVersion = versionId;
   },
 };
 

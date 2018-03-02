@@ -9,10 +9,10 @@
       .card__properties
         .card__measure {{product.measure}}
         .card__price {{product.price}} ₽
-    template(v-else, v-for="(version, index) in product.versions")
+    template(v-else, v-for="version in product.versions")
       .card__versions
-        .card__version(@click="setVersion(index, version.isChosen)")
-          radio(:value="version.isChosen")
+        .card__version(@click="setVersion(version.id)")
+          radio(:value="version.id === product.chosenVersion")
           .card__properties
             .card__measure {{version.measure}}
             .card__price {{version.price}} ₽
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapActions } from 'vuex';
 import Radio from '@/components/ui/Radio';
 
 /* eslint-disable no-underscore-dangle */
@@ -47,15 +47,16 @@ export default {
     },
   },
   methods: {
-    ...mapMutations([
+    ...mapActions([
       'addToCart',
     ]),
-    setVersion(index, currentValue) {
-      if (!currentValue) {
+    // actually this is action creator
+    setVersion(versionId) {
+      if (this.product.chosenVersion !== versionId) {
         this.$store.commit('setVersion', {
           product: this.currentProduct,
           productId: this.product._id,
-          versionIndex: index,
+          versionId,
         });
       }
     },

@@ -1,54 +1,53 @@
-import store from '@/store/';
+import Vue from 'vue';
 /* eslint-disable no-shadow, no-mixed-operators, no-underscore-dangle */
 
-const state = [];
+const state = {};
 
 // helpers
-const getChosenVersion = p => p.versions.find(version => version.isChosen);
-const getCartId = p => (p.versions ? `${p._id}_ver${getChosenVersion(p).id}` : p._id);
-const getPrice = p => (p.versions ? getChosenVersion(p).price : p.price);
-const getTitle = p => (p.versions ? `${p.title} ${getChosenVersion(p).measure}` : p.title);
-const getProduct = cartId => state.find(p => p.cartId === cartId);
-const getProductIndex = cartId => state.map(p => p.cartId).indexOf(cartId);
 const createProduct = p => ({
   _id: p._id,
-  cartId: getCartId(p),
+  cartId: p.versions ? `${p._id}_ver${p.versions[p.chosenVersion].id}` : p._id,
   amount: 1,
-  price: getPrice(p),
-  title: getTitle(p),
+  price: p.versions ? p.versions[p.chosenVersion].price : p.price,
+  title: p.versions ? `${p.title} ${p.versions[p.chosenVersion].measure}` : p.title,
 });
 
 // getters
 const getters = {
-  totalPrice: state => state.reduce((sum, product) => sum + product.price * product.amount, 0),
-  isInCart: state => id => state.filter(p => p._id === id && p.amount > 0).length > 0,
+  totalPrice: state =>
+    Object.keys(state).reduce((sum, cartId) => sum + state[cartId].price * state[cartId].amount, 0),
+  isInCart: state => id => Object.keys(state).some(p => p.indexOf(id) !== -1),
 };
 
 // actions
-const actions = {};
+const actions = {
+  addToCart({ state, commit }, product) {
+    const position = createProduct(product);
+    if (typeof state[position.cartId] !== 'undefined') {
+      commit('changeAmount', { cartId: position.cartId, modifier: 1 });
+    } else {
+      commit('addToCart', position);
+    }
+  },
+  changeAmount({ state, commit }, { cartId, modifier }) {
+    if (state[cartId].amount === -modifier) {
+      commit('removeFromCart', cartId);
+    } else {
+      commit('changeAmount', { cartId, modifier });
+    }
+  },
+};
 
 // mutations
 const mutations = {
-  addToCart(state, product) {
-    // check if already in cart => changeAmount
-    const newProduct = createProduct(product);
-    if (getProductIndex(newProduct.cartId) !== -1) {
-      // TODO convert to action
-      store.commit('changeAmount', { cartId: newProduct.cartId, modifier: 1 });
-    } else {
-      // add to cart
-      state.push(newProduct);
-    }
+  addToCart(state, position) {
+    Vue.set(state, position.cartId, position);
+  },
+  removeFromCart(state, cartId) {
+    Vue.delete(state, cartId);
   },
   changeAmount(state, { cartId, modifier }) {
-    getProduct(cartId).amount += modifier;
-    // const amount = getProduct(cartId).amount;
-    // if (amount === -modifier) {
-    //   const index = getProductIndex(cartId);
-    //   state.splice(index, 1);
-    // } else {
-    //   getProduct(cartId).amount += modifier;
-    // }
+    state[cartId].amount += modifier;
   },
 };
 

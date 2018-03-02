@@ -1,16 +1,20 @@
-// needed check for version
+/* eslint-disable no-param-reassign */
 const prepareProduct = (product) => {
   if (typeof product.versions === 'undefined') {
     return product;
   }
+  // code below converts array of versions to hashMap
   return {
     ...product,
-    versions: product.versions.map((version, index) => ({
-      id: index,
-      measure: version.value.measure,
-      price: version.value.price,
-      isChosen: index === 0,
-    })),
+    versions: product.versions.reduce((hashMap, version, index) => {
+      hashMap[index] = {
+        id: index,
+        measure: version.value.measure,
+        price: version.value.price,
+      };
+      return hashMap;
+    }, {}),
+    chosenVersion: 0,
   };
 };
 
