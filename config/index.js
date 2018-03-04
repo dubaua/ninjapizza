@@ -1,4 +1,3 @@
-
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
@@ -23,6 +22,10 @@ module.exports = {
         pathRewrite: {
           '^/storage': '/storage',
         },
+      },
+      '/order': {
+        target: 'http://ninjapizza.dubaua.ru/',
+        changeOrigin: true,
       },
     },
 

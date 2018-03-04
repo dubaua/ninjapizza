@@ -10,6 +10,7 @@
       <product/>
     </section>
     <cart/>
+    <order/>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import Navigation from '@/components/Navigation';
 import Cart from '@/components/Cart';
 import Banners from '@/components/Banners';
 import Product from '@/components/product';
+import Order from '@/components/Order';
 
 export default {
   name: 'App',
@@ -30,6 +32,7 @@ export default {
     Cart,
     Banners,
     Product,
+    Order,
   },
 };
 </script>

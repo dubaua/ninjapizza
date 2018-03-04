@@ -23,4 +23,30 @@ const get = key =>
     .then(response => response.json())
     .then(blob => blob.entries.map(prepareProduct));
 
-export default { get };
+const sendForm = form =>
+  fetch('/order/', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      form,
+    }),
+  })
+    .then(response => response.json())
+    // eslint-disable-next-line no-console
+    .then(blob => console.log(blob));
+
+const AUTHOR_API_KEY = 'account-a308bd61829abebc2d4fb57b7b3428';
+
+const saveOrder = order =>
+  fetch(`/api/collections/save/orders?token=${AUTHOR_API_KEY}`, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      data: order,
+    }),
+  })
+    .then(response => response.json())
+    // eslint-disable-next-line no-console
+    .then(blob => console.log(blob));
+
+export default { get, sendForm, saveOrder };

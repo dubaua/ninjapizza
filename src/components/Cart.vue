@@ -1,6 +1,8 @@
 <template lang="pug">
   div
-    template(v-for="position in cart", v-if="position.amount !== 0")
+    div(v-if="totalPrice === 0")
+      | Cart is empty
+    template(v-else, v-for="position in cart")
       .position
         span {{position.title}}
         span
