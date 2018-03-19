@@ -16,6 +16,7 @@ const createProduct = p => ({
 const getters = {
   totalPrice: state =>
     Object.keys(state).reduce((sum, cartId) => sum + state[cartId].price * state[cartId].amount, 0),
+  totalAmount: state => Object.keys(state).reduce((sum, cartId) => sum + state[cartId].amount, 0),
   isInCart: state => id => Object.keys(state).some(p => p.indexOf(id) !== -1),
 };
 

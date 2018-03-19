@@ -1,6 +1,6 @@
 <template lang="pug">
-  .products
-    .products__card(v-for="card in products")
+  .row
+    .col.col-xs-12.col-sm-6.col-lg-4.col-xxl-3(v-for="card in products")
       card(:product="card")
 </template>
 
@@ -22,15 +22,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.products {
-  display: flex;
-  flex-wrap: wrap;
-
-  &__card {
-    max-width: 25%;
-    flex-basis: 25%;
-  }
-}
-</style>

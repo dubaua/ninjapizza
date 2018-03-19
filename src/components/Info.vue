@@ -6,14 +6,9 @@
 <script>
 export default {
   name: 'Info',
-  // data() {
-  //   return {
-  //     msg: 'Welcome to Your Vue.js App',
-  //   };
-  // },
 };
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

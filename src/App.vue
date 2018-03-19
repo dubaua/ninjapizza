@@ -1,38 +1,35 @@
-<template>
-  <div id="app">
-    <aside>
-      <logo/>
-      <info/>
-      <navigation/>
-    </aside>
-    <section>
-      <banners/>
-      <product/>
-    </section>
-    <cart/>
-    <order/>
-  </div>
+<template lang="pug">
+  #app
+    panel(v-if="isMenuOpen")
+    page
+    cart(v-if="isMobile")
+    order(v-if="isMobile")
+    app-footer
 </template>
 
 <script>
-import Logo from '@/components/Logo';
-import Info from '@/components/Info';
-import Navigation from '@/components/Navigation';
+import Panel from '@/components/Panel';
+import Page from '@/components/Page';
 import Cart from '@/components/Cart';
-import Banners from '@/components/Banners';
-import Product from '@/components/product';
 import Order from '@/components/Order';
+import AppFooter from '@/components/AppFooter';
 
 export default {
   name: 'App',
   components: {
-    Logo,
-    Info,
-    Navigation,
+    Panel,
+    Page,
     Cart,
-    Banners,
-    Product,
     Order,
+    AppFooter,
+  },
+  computed: {
+    isMobile() {
+      return this.$mq === 'mobile';
+    },
+    isMenuOpen() {
+      return this.$store.state.page.isMenuOpen || this.$mq === 'desktop';
+    },
   },
 };
 </script>

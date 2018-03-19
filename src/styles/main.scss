@@ -1,0 +1,39 @@
+@import "_grid";
+@import "_colors";
+@import "_globals";
+
+html {
+  background: $licorice;
+  color: $snow;
+  font-family: $font-montserrat;
+
+  &.freeze {
+    position: fixed;
+    overflow-y: hidden;
+  }
+}
+
+.button {
+  @include font-montserrat--medium;
+
+  padding: $base $base * 2;
+  border: 0;
+  border-radius: $base * 2;
+  background: linear-gradient(to right, $blaze, $blaze-l);
+  color: $snow;
+  font-weight: bold;
+  line-height: 1;
+  // min-width: 160px;
+  text-align: center;
+
+  &--mini {
+    width: $base * 1.5;
+    height: $base * 1.5;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-weight: normal;
+  }
+}

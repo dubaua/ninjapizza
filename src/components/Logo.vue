@@ -1,19 +1,20 @@
 <template lang="pug">
-  div
-    | Logo
+  router-link(to="/").logo
+    svg: use(xlink:href="#logo")
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
+import logo from '@/assets/icons/logo.svg';
+
 export default {
   name: 'Logo',
-  // data() {
-  //   return {
-  //     msg: 'Welcome to Your Vue.js App',
-  //   };
-  // },
 };
 </script>
 
-<style>
-
+<style lang="scss">
+.logo {
+  display: inline-block;
+  line-height: 0;
+}
 </style>

@@ -12,17 +12,20 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../styles/_colors";
+@import "../../styles/_globals";
+
 .radio {
-  width: 16px;
-  height: 16px;
+  min-width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 1px solid black;
-  box-shadow: inset 0 0 0 8px white;
-  background: #000;
-  transition: box-shadow 0.1s linear;
+  box-shadow: inset 0 0 0 12px $snow;
+  background: $blaze;
+  transition: box-shadow linear;
+  transition-duration: $timing-fast;
 
   &.active {
-    box-shadow: inset 0 0 0 4px white;
+    box-shadow: inset 0 0 0 6px $snow;
   }
 }
 </style>

@@ -1,0 +1,27 @@
+@import "./_colors";
+@import "./_breakpoints";
+
+$font-size-medium: 16px;
+$base: 16px;
+$font-montserrat: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$timing-fast: 0.1s;
+$timing: 0.33s;
+$timing-long: 0.5s;
+
+@mixin font-montserrat {
+  font-family: $font-montserrat;
+}
+
+@mixin font-montserrat--medium {
+  @include font-montserrat();
+
+  font-weight: 500;
+}
+
+@mixin font-montserrat--bold {
+  @include font-montserrat();
+
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}

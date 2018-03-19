@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import products from './modules/products';
 import banners from './modules/banners';
 import cart from './modules/cart';
+import page from './modules/page';
 
 Vue.use(Vuex);
 
@@ -13,6 +14,7 @@ const store = new Vuex.Store({
     products,
     banners,
     cart,
+    page,
   },
   strict: debug,
 });
