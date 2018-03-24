@@ -1,11 +1,9 @@
-$distinction: 6%;
+$primary: #f15025;
+$primary-l: lighten(saturate($primary, 1), 2);
+$primary-d: darken(desaturate($primary, 1), 2);
 
 $background: #1c110a;
-$background-l: lighten(saturate($background, $distinction/3), $distinction);
-$background-d: darken(desaturate($background, $distinction/3), $distinction);
+$background-l: lighten(saturate($background, 1), 4);
+$background-d: darken(desaturate($background, 1), 2);
 
 $white: #f3f4f3;
-
-$primary: #f15025;
-$primary-l: lighten(saturate($primary, $distinction/3), $distinction);
-$primary-d: darken(desaturate($primary, $distinction/3), $distinction);
