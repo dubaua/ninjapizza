@@ -29,13 +29,11 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/_globals";
+@import "../../styles/_globals";
 
 .icon {
   pointer-events: none;
-  width: 100%;
-  height: 100%;
-  display: block;
-  fill: currentColor;
+  display: inline-block;
+  fill: $white;
 }
 </style>

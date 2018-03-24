@@ -1,14 +1,15 @@
 <template lang="pug">
   router-link(to="/").logo
-    svg: use(xlink:href="#logo")
+    icon(glyph="logo")
 </template>
 
 <script>
 /* eslint-disable no-unused-vars */
-import logo from '@/assets/icons/logo.svg';
+import Icon from '@/components/Icon';
 
 export default {
   name: 'Logo',
+  components: { Icon },
 };
 </script>
 

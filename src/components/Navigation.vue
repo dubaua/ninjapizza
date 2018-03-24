@@ -2,37 +2,33 @@
   .menu
     router-link(to="/", @click.native="closeMenu").menu__link
       .menu__icon
-        svg: use(xlink:href="#pizza")
+        icon(glyph="pizza", :width="32", :height="32")
       .menu__label Пицца
     router-link(to="/desserts", @click.native="closeMenu").menu__link
       .menu__icon
-        svg: use(xlink:href="#donut")
+        icon(glyph="donut", :width="32", :height="32")
       .menu__label Десерты
     router-link(to="/drinks", @click.native="closeMenu").menu__link
       .menu__icon
-        svg: use(xlink:href="#drink")
+        icon(glyph="drink", :width="32", :height="32")
       .menu__label Напитки
     router-link(to="/salad", @click.native="closeMenu").menu__link
       .menu__icon
-        svg: use(xlink:href="#salad")
+        icon(glyph="salad", :width="32", :height="32")
       .menu__label Салаты
     router-link(to="/snack", @click.native="closeMenu").menu__link
       .menu__icon
-        svg: use(xlink:href="#fries")
+        icon(glyph="fries", :width="32", :height="32")
       .menu__label Закуски
 </template>
 
 <script>
-/* eslint-disable no-unused-vars */
-import salad from '@/assets/icons/salad.svg';
-import pizza from '@/assets/icons/pizza.svg';
-import fries from '@/assets/icons/fries.svg';
-import drink from '@/assets/icons/drink.svg';
-import donut from '@/assets/icons/donut.svg';
+import Icon from '@/components/Icon';
 import { mapMutations } from 'vuex';
 
 export default {
   name: 'Navigation',
+  components: { Icon },
   methods: {
     ...mapMutations(['closeMenu']),
   },
@@ -55,16 +51,6 @@ export default {
 
     & * + * {
       margin-left: $base * 1.5;
-    }
-  }
-
-  &__icon {
-    & svg {
-      width: 32px;
-      height: 32px;
-    }
-    & use {
-      fill: $white;
     }
   }
 

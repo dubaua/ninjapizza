@@ -57,10 +57,15 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ['svg-sprite-loader'],
-        options: {
-          runtimeCompat: true
-        }
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              runtimeCompat: true,
+            },
+          },
+          'svgo-loader',
+        ],
       },
       {
         test: /\.(png|jpe?g|gif)(\?.*)?$/,

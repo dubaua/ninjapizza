@@ -8,8 +8,6 @@
 /* eslint-disable no-unused-vars */
 import Banners from '@/components/Banners';
 import Product from '@/components/product';
-import logo from '@/assets/icons/logo-compact.svg';
-import '@/assets/icons/shopping-bag.svg';
 import { mapMutations } from 'vuex';
 
 export default {

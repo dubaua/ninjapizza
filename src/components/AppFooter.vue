@@ -5,22 +5,19 @@
       .hamburger-box
         .hamburger-inner
   .footer__logo
-    svg: use(xlink:href="#logo-compact")
+    icon(glyph="logo-compact", :width="91", :height="48")
   button.footer__button.cart-button(@click="toggleCart")
     .cart-button__label(v-if="totalAmount") {{cartLabel}}
-    svg: use(xlink:href="#shopping-bag")
+    icon(glyph="shopping-bag", :width="48", :height="48")
 </template>
 
 <script>
-/* eslint-disable no-unused-vars */
-import logo from '@/assets/icons/logo-compact.svg';
-import '@/assets/icons/shopping-bag.svg';
+import Icon from '@/components/Icon';
 import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   name: 'AppFooter',
-  components: {
-  },
+  components: { Icon },
   computed: {
     ...mapGetters(['totalAmount']),
     cartLabel() {
@@ -66,21 +63,10 @@ export default {
     background: none;
     padding: 0;
     margin: 0;
-
-    & svg {
-      fill: $white;
-      max-width: $base*3;
-      max-height: $base*3;
-    }
   }
   &__logo {
     flex-grow: 1;
     text-align: center;
-
-    & svg {
-      max-width: 91px;
-      max-height: 48px;
-    }
   }
 }
 
