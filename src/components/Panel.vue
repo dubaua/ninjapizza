@@ -6,6 +6,7 @@
       )
       logo(v-if="!isMobile")
       //- info
+      Title(v-if="isMobile") Меню
       navigation
       cart(v-if="!isMobile")
       order(v-if="!isMobile")
@@ -15,6 +16,7 @@
 import Logo from '@/components/Logo';
 import Info from '@/components/Info';
 import Navigation from '@/components/Navigation';
+import Title from '@/components/Title';
 import Cart from '@/components/Cart';
 import Order from '@/components/Order';
 import { mapMutations } from 'vuex';
@@ -25,6 +27,7 @@ export default {
     Logo,
     Info,
     Navigation,
+    Title,
     Cart,
     Order,
   },
@@ -46,7 +49,7 @@ export default {
 @import "../styles/_globals";
 
 .panel {
-  background: $background-d;
+  background: $background;
   position: fixed;
   top: 0;
   left: 0;

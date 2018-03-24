@@ -3,6 +3,7 @@
     aside.cart(
       v-if="isCartOpen",
       v-touch:swipe.up="closeCart")
+      Title  Корзина
       .cart__empty(v-if="totalAmount === 0")
         | Ваша корзина пуста
       //- Move to separate component
@@ -27,10 +28,14 @@
 </template>
 
 <script>
+import Title from '@/components/Title';
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'Cart',
+  components: {
+    Title,
+  },
   computed: {
     ...mapGetters(['totalPrice', 'totalAmount']),
     ...mapState(['cart']),
@@ -56,7 +61,6 @@ export default {
   z-index: 1;
 
   background: $background;
-  padding: $base;
 
   &__empty {
     text-align: center;
