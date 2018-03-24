@@ -50,7 +50,7 @@ export default {
     padding: $base*0.75 $base*1.5;
 
     &.router-link-exact-active {
-      background: $licorice;
+      background: $background;
     }
 
     & * + * {
@@ -64,12 +64,12 @@ export default {
       height: 32px;
     }
     & use {
-      fill: $snow;
+      fill: $white;
     }
   }
 
   &__label {
-    color: $snow;
+    color: $white;
     text-transform: uppercase;
   }
 }

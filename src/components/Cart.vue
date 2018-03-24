@@ -55,7 +55,7 @@ export default {
   top: 0;
   z-index: 1;
 
-  background: $licorice;
+  background: $background;
   padding: $base;
 
   &__empty {
@@ -64,7 +64,7 @@ export default {
   &__total {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid $snow;
+    border-top: 1px solid $white;
     margin-top: $base;
     padding-top: $base;
   }

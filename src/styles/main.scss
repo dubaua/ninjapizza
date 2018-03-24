@@ -3,8 +3,8 @@
 @import "_globals";
 
 html {
-  background: $licorice;
-  color: $snow;
+  background: $background;
+  color: $white;
   font-family: $font-montserrat;
 
   &.freeze {
@@ -19,8 +19,8 @@ html {
   padding: $base $base * 2;
   border: 0;
   border-radius: $base * 2;
-  background: linear-gradient(to right, $blaze, $blaze-l);
-  color: $snow;
+  background: linear-gradient(to right, $primary, $primary-l);
+  color: $white;
   font-weight: bold;
   line-height: 1;
   // min-width: 160px;

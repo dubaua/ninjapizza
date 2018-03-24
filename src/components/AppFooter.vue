@@ -55,8 +55,8 @@ export default {
   display: flex;
   justify-content: space-between;
 
-  background: $licorice;
-  box-shadow: 0 -1px 0 $licorice-l;
+  background: $background;
+  box-shadow: 0 -1px 0 $background-l;
 
   &__button {
     max-width: $base*4;
@@ -68,7 +68,7 @@ export default {
     margin: 0;
 
     & svg {
-      fill: $snow;
+      fill: $white;
       max-width: $base*3;
       max-height: $base*3;
     }
@@ -96,8 +96,8 @@ export default {
     padding: 1px;
     border-radius: 50%;
 
-    color: $snow;
-    background: $blaze;
+    color: $white;
+    background: $primary;
     font-weight: 500;
     font-size: 10px;
     line-height: 13px;

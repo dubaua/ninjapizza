@@ -46,7 +46,7 @@ export default {
 @import "../styles/_globals";
 
 .panel {
-  background: $licorice-d;
+  background: $background-d;
   position: fixed;
   top: 0;
   left: 0;
