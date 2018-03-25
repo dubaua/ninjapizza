@@ -1,25 +1,10 @@
 <template lang="pug">
   .menu
-    router-link(to="/", @click.native="closeMenu").menu__link
-      .menu__icon
-        icon(glyph="pizza", :width="32", :height="32")
-      .menu__label Пицца
-    router-link(to="/desserts", @click.native="closeMenu").menu__link
-      .menu__icon
-        icon(glyph="donut", :width="32", :height="32")
-      .menu__label Десерты
-    router-link(to="/drinks", @click.native="closeMenu").menu__link
-      .menu__icon
-        icon(glyph="drink", :width="32", :height="32")
-      .menu__label Напитки
-    router-link(to="/salad", @click.native="closeMenu").menu__link
-      .menu__icon
-        icon(glyph="salad", :width="32", :height="32")
-      .menu__label Салаты
-    router-link(to="/snack", @click.native="closeMenu").menu__link
-      .menu__icon
-        icon(glyph="fries", :width="32", :height="32")
-      .menu__label Закуски
+    template(v-for="link in menu")
+      router-link(:to="link.to", @click.native="closeMenu").menu__link
+        .menu__icon
+          icon(:glyph="link.glyph", :width="32", :height="32")
+        .menu__label {{link.label}}
 </template>
 
 <script>
@@ -28,6 +13,37 @@ import { mapMutations } from 'vuex';
 
 export default {
   name: 'Navigation',
+  data() {
+    return {
+      menu: [
+        {
+          to: '/',
+          label: 'Пицца',
+          glyph: 'pizza',
+        },
+        {
+          to: '/desserts',
+          label: 'Десерты',
+          glyph: 'donut',
+        },
+        {
+          to: '/drinks',
+          label: 'Напитки',
+          glyph: 'drink',
+        },
+        {
+          to: '/salad',
+          label: 'Салаты',
+          glyph: 'salad',
+        },
+        {
+          to: '/snack',
+          label: 'Закуски',
+          glyph: 'fries',
+        },
+      ],
+    };
+  },
   components: { Icon },
   methods: {
     ...mapMutations(['closeMenu']),
