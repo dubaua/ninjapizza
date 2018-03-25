@@ -4,7 +4,7 @@
 
 html {
   background: $background;
-  color: $white;
+  color: $text-color;
   font-family: $font-montserrat;
 
   &.freeze {
@@ -20,7 +20,7 @@ html {
   border: 0;
   border-radius: $base * 2;
   background: linear-gradient(to right, $primary, $primary-l);
-  color: $white;
+  color: $text-color;
   font-weight: bold;
   line-height: 1;
   // min-width: 160px;

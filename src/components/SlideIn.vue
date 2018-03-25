@@ -68,7 +68,7 @@ export default {
     padding: $base 0;
     box-shadow: 0 1px 0 $background-l;
     font-size: $base;
-    color: $white;
+    color: $text-color;
     text-align: center;
   }
 }

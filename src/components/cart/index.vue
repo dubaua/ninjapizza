@@ -67,7 +67,7 @@ export default {
   &__total {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid $white;
+    border-top: 1px solid $text-color;
     margin: $base 0;
     padding-top: $base;
   }

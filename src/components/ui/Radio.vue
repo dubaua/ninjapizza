@@ -19,13 +19,13 @@ export default {
   min-width: 24px;
   height: 24px;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 12px $white;
+  box-shadow: inset 0 0 0 12px $text-color;
   background: $primary;
   transition: box-shadow linear;
   transition-duration: $timing;
 
   &.active {
-    box-shadow: inset 0 0 0 6px $white;
+    box-shadow: inset 0 0 0 6px $text-color;
   }
 }
 </style>

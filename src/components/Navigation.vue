@@ -71,7 +71,7 @@ export default {
   }
 
   &__label {
-    color: $white;
+    color: $text-color;
     text-transform: uppercase;
   }
 }
