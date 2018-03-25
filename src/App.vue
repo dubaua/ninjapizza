@@ -10,7 +10,7 @@
 <script>
 import Panel from '@/components/Panel';
 import Page from '@/components/Page';
-import Cart from '@/components/Cart';
+import Cart from '@/components/cart';
 import Order from '@/components/Order';
 import AppFooter from '@/components/AppFooter';
 

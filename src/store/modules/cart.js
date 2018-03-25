@@ -9,7 +9,8 @@ const createProduct = p => ({
   cartId: p.versions ? `${p._id}_ver${p.versions[p.chosenVersion].id}` : p._id,
   amount: 1,
   price: p.versions ? p.versions[p.chosenVersion].price : p.price,
-  title: p.versions ? `${p.title} ${p.versions[p.chosenVersion].measure}` : p.title,
+  title: p.title,
+  details: p.versions ? p.versions[p.chosenVersion].measure : '',
 });
 
 // getters

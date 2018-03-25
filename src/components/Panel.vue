@@ -17,7 +17,7 @@ import Logo from '@/components/Logo';
 import Info from '@/components/Info';
 import Navigation from '@/components/Navigation';
 import Title from '@/components/Title';
-import Cart from '@/components/Cart';
+import Cart from '@/components/cart';
 import Order from '@/components/Order';
 import { mapMutations } from 'vuex';
 
@@ -49,7 +49,7 @@ export default {
 @import "../styles/_globals";
 
 .panel {
-  background: $background;
+  background: $background-d;
   position: fixed;
   top: 0;
   left: 0;

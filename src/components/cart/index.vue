@@ -5,36 +5,34 @@
       v-touch:swipe.up="closeCart")
       Title  Корзина
       .cart__empty(v-if="totalAmount === 0")
-        | Ваша корзина пуста
-      //- Move to separate component
-      .cart__position.position(v-else, v-for="position in cart")
-        .row
-          .col-xs-12
-            .position__title {{position.title}}
-          .col-xs-12
-            .position__status
-              //- button.button.button--mini(
-              //-   @click="changeAmount({ cartId: position.cartId, modifier: -1})") –
-              | {{position.amount}}
-              //- button.button.button--mini(
-              //-   @click="changeAmount({ cartId: position.cartId, modifier: 1})") +
-              | &times; {{position.price}} ₽
-              button.button.button--mini(
-                @click="changeAmount({ cartId: position.cartId, modifier: -position.amount})")
-                  | &times;
+        .cart__empty-icon
+          icon(glyph="shopping-bag", :width="160", :height="160")
+        .cart__empty-text
+          | Ваша корзина пуста
+      .cart__contents(v-else)
+        position(
+          v-for="position in cart",
+          :key="position.id",
+          :position="position")
       .cart__total(v-if="totalAmount !== 0")
         .cart__total-label Всего
         .cart__total-sum {{totalPrice}} ₽
+      button.button
+        | Заказываю
 </template>
 
 <script>
-import Title from '@/components/Title';
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
+import Title from '@/components/Title';
+import Icon from '@/components/Icon';
+import Position from './Position';
 
 export default {
   name: 'Cart',
   components: {
     Title,
+    Icon,
+    Position,
   },
   computed: {
     ...mapGetters(['totalPrice', 'totalAmount']),
@@ -51,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/_globals";
+@import "../../styles/_globals";
 .cart {
   position: fixed;
   bottom: 56px;
@@ -65,27 +63,32 @@ export default {
   &__empty {
     text-align: center;
   }
+
+  &__empty-icon {
+    opacity: 0.2;
+  }
+
+  &__contents {
+    padding: 0 $base;
+  }
+
   &__total {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid $white;
-    margin-top: $base;
+    margin: $base;
     padding-top: $base;
   }
   &__total-sum {
     padding-right: $base*1.5;
   }
 }
-.position {
-  margin-bottom: $base;
-  &__status {
-    text-align: right;
-  }
-}
+
 .slide-down-enter-active,
 .slide-down-leave-active {
   transition: transform $timing;
 }
+
 .slide-down-enter,
 .slide-down-leave-to {
   transform: translate(0, 100%);

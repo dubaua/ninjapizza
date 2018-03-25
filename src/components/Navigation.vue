@@ -46,7 +46,7 @@ export default {
     padding: $base*0.75 $base*1.5;
 
     &.router-link-exact-active {
-      background: $background-d;
+      background: $background;
     }
 
     & * + * {
