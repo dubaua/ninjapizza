@@ -50,16 +50,14 @@ export default {
   display: flex;
   flex-direction: column;
 
-  background: $background;
-
   &__empty {
     margin: auto;
     padding-bottom: 4em;
     text-align: center;
   }
 
-  &__empty-icon {
-    opacity: 0.2;
+  &__empty-icon svg {
+    fill: $background-l;
   }
 
   &__filled {

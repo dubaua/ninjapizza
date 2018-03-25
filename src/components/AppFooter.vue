@@ -4,7 +4,7 @@
     .hamburger.hamburger--squeeze(:class="{'is-active':isMenuOpen}")
       .hamburger-box
         .hamburger-inner
-  .footer__logo
+  router-link(to="/").footer__logo
     icon(glyph="logo-compact", :width="91", :height="48")
   button.footer__button.cart-button(@click="toggleCart")
     .cart-button__label(v-if="totalAmount") {{cartLabel}}

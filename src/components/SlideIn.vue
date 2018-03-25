@@ -59,7 +59,8 @@ export default {
   display: flex;
   flex-direction: column;
   z-index: 2;
-  background: $background;
+  background: $background-d;
+  box-shadow: 1px 0 0 $background-l;
 
   &__title {
     @include font-montserrat--bold;

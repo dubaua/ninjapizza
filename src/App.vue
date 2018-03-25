@@ -1,6 +1,9 @@
 <template lang="pug">
   #app
-    section.page(v-touch:swipe.right="openMenu")
+    section.page(
+      v-touch:swipe.right="openMenu",
+      v-touch:swipe.left="closeMenu",
+    )
       banners
       product
     template(v-if="isMobile")
@@ -69,7 +72,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['openMenu']),
+    ...mapMutations(['openMenu', 'closeMenu']),
   },
 };
 </script>
@@ -78,13 +81,16 @@ export default {
 @import "./styles/_globals";
 
 .page {
+  box-sizing: border-box;
   padding-bottom: 56px;
+  min-height: 100vh;
 }
 
 @include breakpoint("xl") {
   .page {
-    padding-bottom: 0;
     margin-left: 300px;
+
+    padding-bottom: 0;
   }
 }
 
