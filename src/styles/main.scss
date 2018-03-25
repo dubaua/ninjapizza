@@ -6,11 +6,14 @@ html {
   background: $background;
   color: $text-color;
   font-family: $font-montserrat;
+}
 
-  &.freeze {
-    position: fixed;
-    overflow-y: hidden;
-  }
+.logo-primary {
+  fill: $text-color;
+}
+
+.logo-secondary {
+  fill: $primary;
 }
 
 .button {
