@@ -1,7 +1,10 @@
 <template lang="pug">
   .row
-    .col.col-xs-12.col-sm-6.col-lg-4.col-xxl-3(v-for="card in products")
-      card(:product="card")
+    template(v-if="products")
+      .col.col-xs-12.col-sm-6.col-lg-4.col-xxl-3(v-for="card in products")
+        card(:product="card")
+    .col.col-xs-12(v-else)
+      | Нет товаров
 </template>
 
 <script>
