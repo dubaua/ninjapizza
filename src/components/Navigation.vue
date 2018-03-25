@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Icon from '@/components/Icon';
+import Icon from '@/components/icon';
 import { mapMutations } from 'vuex';
 
 export default {

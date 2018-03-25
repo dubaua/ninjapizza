@@ -22,7 +22,7 @@ export default {
   box-shadow: inset 0 0 0 12px $white;
   background: $primary;
   transition: box-shadow linear;
-  transition-duration: $timing-fast;
+  transition-duration: $timing;
 
   &.active {
     box-shadow: inset 0 0 0 6px $white;

@@ -5,7 +5,7 @@
 
 <script>
 /* eslint-disable no-unused-vars */
-import Icon from '@/components/Icon';
+import Icon from '@/components/icon';
 
 export default {
   name: 'Logo',

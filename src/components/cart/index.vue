@@ -3,28 +3,29 @@
     aside.cart(
       v-if="isCartOpen",
       v-touch:swipe.up="closeCart")
-      Title  Корзина
+      Title Корзина
       .cart__empty(v-if="totalAmount === 0")
         .cart__empty-icon
           icon(glyph="shopping-bag", :width="160", :height="160")
         .cart__empty-text
           | Ваша корзина пуста
-      .cart__contents(v-else)
-        position(
-          v-for="position in cart",
-          :key="position.id",
-          :position="position")
-      .cart__total(v-if="totalAmount !== 0")
-        .cart__total-label Всего
-        .cart__total-sum {{totalPrice}} ₽
-      button.button
-        | Заказываю
+      .cart__filled(v-else)
+        .cart__contents
+          position(
+            v-for="position in cart",
+            :key="position.id",
+            :position="position")
+        .cart__total
+          .cart__total-label Всего
+          .cart__total-sum {{totalPrice}} ₽
+        button.button.button--wide(@click="openOrder")
+          | Оформляю
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 import Title from '@/components/Title';
-import Icon from '@/components/Icon';
+import Icon from '@/components/icon';
 import Position from './Position';
 
 export default {
@@ -43,7 +44,7 @@ export default {
   },
   methods: {
     ...mapActions(['changeAmount']),
-    ...mapMutations(['closeCart']),
+    ...mapMutations(['closeCart', 'openOrder']),
   },
 };
 </script>
@@ -57,10 +58,14 @@ export default {
   right: 0;
   top: 0;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 
   background: $background;
 
   &__empty {
+    margin: auto;
+    padding-bottom: 4em;
     text-align: center;
   }
 
@@ -68,7 +73,7 @@ export default {
     opacity: 0.2;
   }
 
-  &__contents {
+  &__filled {
     padding: 0 $base;
   }
 
@@ -76,7 +81,7 @@ export default {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid $white;
-    margin: $base;
+    margin: $base 0;
     padding-top: $base;
   }
   &__total-sum {
