@@ -19,7 +19,7 @@ const prepareProduct = (product) => {
 };
 
 const get = key =>
-  fetch(`/api/collections/get/${key}?token=${process.env.API_KEY}`)
+  fetch(`/cockpit/api/collections/get/${key}?token=${process.env.API_KEY}`)
     .then(response => response.json())
     .then(blob => blob.entries.map(prepareProduct));
 
@@ -32,13 +32,12 @@ const sendForm = form =>
     }),
   })
     .then(response => response.json())
-    // eslint-disable-next-line no-console
-    .then(blob => console.log(blob));
+    .then(blob => blob);
 
 const AUTHOR_API_KEY = 'account-a308bd61829abebc2d4fb57b7b3428';
 
 const saveOrder = order =>
-  fetch(`/api/collections/save/orders?token=${AUTHOR_API_KEY}`, {
+  fetch(`/cockpit/api/collections/save/orders?token=${AUTHOR_API_KEY}`, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -47,6 +46,6 @@ const saveOrder = order =>
   })
     .then(response => response.json())
     // eslint-disable-next-line no-console
-    .then(blob => console.log(blob));
+    .then(blob => console.log('send result', blob));
 
 export default { get, sendForm, saveOrder };
