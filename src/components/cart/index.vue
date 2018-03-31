@@ -14,19 +14,20 @@
       .cart__total
         .cart__total-label Всего
         .cart__total-sum {{totalPrice}} ₽
-      button.button.button--wide(@click="openOrder")
-        | Оформляю
+      order
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import Icon from '@/components/icon';
+import Order from '@/components/Order';
 import Position from './Position';
 
 export default {
   name: 'Cart',
   components: {
     Icon,
+    Order,
     Position,
   },
   computed: {
@@ -37,8 +38,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['changeAmount']),
-    ...mapMutations(['closeCart', 'openOrder']),
+    ...mapActions(['changeAmount', 'closeCart']),
   },
 };
 </script>

@@ -1,44 +1,61 @@
 /* eslint-disable no-shadow */
-// import disableScroll from 'disable-scroll';
 
 const state = {
   isMenuOpen: false,
   isCartOpen: false,
-  isOrderOpen: false,
+  isFrozen: false,
+  nextAction: '',
 };
 
-// mutations
 const mutations = {
-  openMenu(state) {
-    state.isMenuOpen = true;
+  setMenu(state, payload) {
+    state.isMenuOpen = payload;
   },
-  closeMenu(state) {
-    state.isMenuOpen = false;
+  setCart(state, payload) {
+    state.isCartOpen = payload;
   },
-  toggleMenu(state) {
-    state.isMenuOpen = !state.isMenuOpen;
+  scheduleAction(state, payload) {
+    state.nextAction = payload;
   },
-  openCart(state) {
-    state.isCartOpen = true;
+};
+
+const actions = {
+  openMenu({ commit }) {
+    commit('setMenu', true);
   },
-  closeCart(state) {
-    state.isCartOpen = false;
+  closeMenu({ commit }) {
+    commit('setMenu', false);
   },
-  toggleCart(state) {
-    state.isCartOpen = !state.isCartOpen;
+  toggleMenu({ state, commit }) {
+    commit('setMenu', !state.isMenuOpen);
   },
-  openOrder(state) {
-    state.isOrderOpen = true;
+  openCart({ commit }) {
+    commit('setCart', true);
   },
-  closeOrder(state) {
-    state.isOrderOpen = false;
+  closeCart({ commit }) {
+    commit('setCart', false);
   },
-  toggleOrder(state) {
-    state.isOrderOpen = !state.isOrderOpen;
+  toggleCart({ state, commit }) {
+    commit('setCart', !state.isCartOpen);
+  },
+  scheduleAction({ state, commit, dispatch }, { next, blocking }) {
+    if (state[`is${blocking}Open`]) {
+      commit('scheduleAction', next);
+      commit(`set${blocking}`, false);
+    } else {
+      dispatch(next);
+    }
+  },
+  dispatchNext({ state, commit, dispatch }) {
+    if (state.nextAction) {
+      dispatch(state.nextAction);
+      commit('scheduleAction', '');
+    }
   },
 };
 
 export default {
   state,
   mutations,
+  actions,
 };

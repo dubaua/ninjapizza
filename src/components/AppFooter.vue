@@ -1,19 +1,19 @@
 <template lang="pug">
 .footer(v-if="isMobile")
-  button.footer__button(@click="toggleMenu")
+  button.footer__button(@click="scheduleAction({next:'toggleMenu',blocking:'Cart'})")
     .hamburger.hamburger--squeeze(:class="{'is-active':isMenuOpen}")
       .hamburger-box
         .hamburger-inner
   router-link(to="/").footer__logo
     icon(glyph="logo-compact", :width="91", :height="48")
-  button.footer__button.cart-button(@click="toggleCart")
+  button.footer__button.cart-button(@click="scheduleAction({next:'toggleCart',blocking:'Menu'})")
     .cart-button__label(v-if="totalAmount") {{cartLabel}}
     icon(glyph="shopping-bag", :width="48", :height="48")
 </template>
 
 <script>
 import Icon from '@/components/icon';
-import { mapMutations, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'AppFooter',
@@ -31,7 +31,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['toggleMenu', 'toggleCart']),
+    ...mapActions(['scheduleAction']),
   },
 };
 </script>

@@ -1,11 +1,11 @@
 <template lang="pug">
-  transition(:name="transitionName")
+  transition(:name="transitionName" @after-leave="dispatchNext")
     aside.slide-in(
       v-if="isActive",
-      v-touch:swipe.top="from === 'top' && swipeMutation ? onSwipe : null",
-      v-touch:swipe.left="from === 'left' && swipeMutation ? onSwipe : null",
-      v-touch:swipe.right="from === 'right' && swipeMutation ? onSwipe : null",
-      v-touch:swipe.bottom="from === 'bottom' && swipeMutation ? onSwipe : null",
+      v-touch:swipe.top="from === 'top' && swipeAction ? onSwipe : null",
+      v-touch:swipe.left="from === 'left' && swipeAction ? onSwipe : null",
+      v-touch:swipe.right="from === 'right' && swipeAction ? onSwipe : null",
+      v-touch:swipe.bottom="from === 'bottom' && swipeAction ? onSwipe : null",
     )
       h1.slide-in__title(v-if="title") {{ title }}
       div.slide-in__body
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'SlideIn',
   props: {
@@ -25,23 +27,21 @@ export default {
       requred: true,
       type: Boolean,
     },
-    swipeMutation: String,
+    swipeAction: String,
     title: String,
   },
   computed: {
     isMobile() {
       return this.$mq === 'mobile';
     },
-    isMenuOpen() {
-      return this.$store.state.page.isMenuOpen;
-    },
     transitionName() {
       return `slide-from-${this.from}`;
     },
   },
   methods: {
+    ...mapActions(['dispatchNext']),
     onSwipe() {
-      this.$store.commit(this.swipeMutation);
+      this.$store.dispatch(this.swipeAction);
     },
   },
 };

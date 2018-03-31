@@ -9,7 +9,7 @@
 
 <script>
 import Icon from '@/components/icon';
-import { mapMutations } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Navigation',
@@ -46,7 +46,7 @@ export default {
   },
   components: { Icon },
   methods: {
-    ...mapMutations(['closeMenu']),
+    ...mapActions(['closeMenu']),
   },
 };
 </script>

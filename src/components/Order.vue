@@ -11,7 +11,7 @@
       p
         label Пожелания к заказу
         input(v-model="comment", name="comment")
-      button Отправить
+      button.button Заказываю
 </template>
 
 <script>

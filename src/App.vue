@@ -10,7 +10,7 @@
       slide-in(
         from="left",
         :isActive="page.isMenuOpen",
-        swipeMutation="closeMenu",
+        swipeAction="closeMenu",
         title="Меню",
       )
         aside
@@ -19,17 +19,10 @@
       slide-in(
         from="bottom",
         :isActive="page.isCartOpen",
-        swipeMutation="closeCart",
+        swipeAction="closeCart",
         title="Корзина",
       )
         cart
-      slide-in(
-        from="bottom",
-        :isActive="page.isOrderOpen",
-        swipeMutation="closeOrder",
-        title="Ваш Заказ",
-      )
-        order
       app-footer
     template(v-else)
       aside.desktop-panel
@@ -37,7 +30,6 @@
         info
         navigation
         cart
-        order
 </template>
 
 <script>
@@ -47,10 +39,9 @@ import SlideIn from '@/components/SlideIn';
 import Navigation from '@/components/Navigation';
 import Info from '@/components/Info';
 import Cart from '@/components/cart';
-import Order from '@/components/Order';
 import AppFooter from '@/components/AppFooter';
 import Logo from '@/components/Logo';
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'App',
@@ -59,7 +50,6 @@ export default {
     Product,
     SlideIn,
     Cart,
-    Order,
     AppFooter,
     Logo,
     Info,
@@ -72,7 +62,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['openMenu', 'closeMenu']),
+    ...mapActions(['openMenu', 'closeMenu']),
   },
 };
 </script>

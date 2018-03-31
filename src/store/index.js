@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+// import { freeze, unfreeze } from '@/utils';
 import products from './modules/products';
 import banners from './modules/banners';
 import cart from './modules/cart';
@@ -18,6 +19,13 @@ const store = new Vuex.Store({
   },
   strict: debug,
 });
+
+// ТУДУ сделать фриз по открытию панельки и анфриз по закрытию
+
+// store.watch(
+//   state => state.page.isMenuOpen || state.page.isCartOpen,
+//   haveToFreeze => (haveToFreeze ? freeze() : unfreeze()),
+// );
 
 const keys = ['pizza', 'desserts', 'drinks', 'salad', 'snack'];
 keys.map(key => store.dispatch('fetchProductsByKey', key));
