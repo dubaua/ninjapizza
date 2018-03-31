@@ -1,6 +1,7 @@
 <template lang="pug">
-  div
-    | Contact information
+  .info
+    .info__block ⏰ 9–23, выходные 10–24
+    .info__block ☎️ 223–64–33
 </template>
 
 <script>
@@ -10,5 +11,16 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../styles/_globals";
 
+.info {
+  padding: $base;
+  background: $background;
+
+  &__block {
+    @include font-montserrat--medium();
+    text-align: center;
+    margin: $base 0;
+  }
+}
 </style>
