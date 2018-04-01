@@ -59,7 +59,7 @@ export default {
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: $base*0.75 $base*1.5;
+    padding: $base*0.5 $base*1.5;
 
     &.router-link-exact-active {
       background: $background;
