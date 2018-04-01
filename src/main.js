@@ -3,11 +3,13 @@ import '@/styles/main.scss';
 import Vue from 'vue';
 import VueMq from 'vue-mq';
 import Vue2TouchEvents from 'vue2-touch-events';
+import VueFormGenerator from 'vue-form-generator';
 import '../static/fonts.css';
 import App from './App';
 import router from './router';
 import store from './store/';
 
+Vue.use(VueFormGenerator);
 Vue.use(Vue2TouchEvents);
 Vue.config.productionTip = false;
 
