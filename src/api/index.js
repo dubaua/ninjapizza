@@ -45,7 +45,6 @@ const saveOrder = order =>
     }),
   })
     .then(response => response.json())
-    // eslint-disable-next-line no-console
-    .then(blob => console.log('send result', blob));
+    .then(blob => blob);
 
 export default { get, sendForm, saveOrder };
