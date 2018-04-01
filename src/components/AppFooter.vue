@@ -1,10 +1,10 @@
 <template lang="pug">
-.footer(v-if="isMobile")
+.footer
   button.footer__button(@click="scheduleAction({next:'toggleMenu',blocking:'Cart'})")
-    .hamburger.hamburger--squeeze(:class="{'is-active':isMenuOpen}")
+    .hamburger.hamburger--squeeze(:class="{'is-active':page.isMenuOpen}")
       .hamburger-box
         .hamburger-inner
-  router-link(to="/").footer__logo
+  router-link(to="/", @click.native="closeAll").footer__logo
     icon(glyph="logo-compact", :width="91", :height="48")
   button.footer__button.cart-button(@click="scheduleAction({next:'toggleCart',blocking:'Menu'})")
     .cart-button__label(v-if="totalAmount") {{cartLabel}}
@@ -13,25 +13,20 @@
 
 <script>
 import Icon from '@/components/icon';
-import { mapActions, mapGetters } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'AppFooter',
   components: { Icon },
   computed: {
+    ...mapState(['page']),
     ...mapGetters(['totalAmount']),
     cartLabel() {
       return this.totalAmount > 9 ? '9+' : this.totalAmount;
     },
-    isMenuOpen() {
-      return this.$store.state.page.isMenuOpen;
-    },
-    isMobile() {
-      return this.$mq === 'mobile';
-    },
   },
   methods: {
-    ...mapActions(['scheduleAction']),
+    ...mapActions(['scheduleAction', 'closeAll']),
   },
 };
 </script>
