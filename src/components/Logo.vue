@@ -1,10 +1,9 @@
 <template lang="pug">
   router-link(to="/").logo
-    icon(glyph="logo")
+    icon(glyph="logo", :width="300", :height="100")
 </template>
 
 <script>
-/* eslint-disable no-unused-vars */
 import Icon from '@/components/icon';
 
 export default {
