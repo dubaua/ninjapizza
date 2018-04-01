@@ -17,6 +17,10 @@ export default {
   padding: $base;
   background: $background;
 
+  @include breakpoint("lg") {
+    background: none;
+  }
+
   &__block {
     @include font-montserrat--medium();
     text-align: center;
