@@ -1,6 +1,7 @@
 @import "_grid";
 @import "_colors";
 @import "_globals";
+@import "_transitions";
 
 html {
   background: $background;
@@ -21,17 +22,32 @@ html {
 
   padding: $base $base * 2;
   border: 0;
-  border-radius: $base * 2;
-  background: linear-gradient(to right, $primary, $primary-l);
+  border-radius: $base / 4;
+  background: $primary;
   color: $text-color;
   font-weight: bold;
   line-height: 1;
-  // min-width: 160px;
+  min-width: 170px;
   text-align: center;
+  transition: $timing-fast;
+
+  &:hover {
+    background: $primary-l;
+  }
+
+  &:active {
+    background: $primary-d;
+  }
+
+  &:disabled {
+    background: desaturate($primary, 100%);
+    cursor: not-allowed;
+  }
 
   &--mini {
     width: $base * 1.5;
     height: $base * 1.5;
+    min-width: 0;
     text-align: center;
     display: inline-flex;
     align-items: center;
@@ -44,3 +60,7 @@ html {
     width: 100%;
   }
 }
+
+// .turn .button {
+//   transform: rotateX(-89deg) translateZ(24px);
+// }

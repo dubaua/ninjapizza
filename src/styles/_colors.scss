@@ -1,9 +1,10 @@
-$primary: #f15025;
+// $primary: #f15025;
+$primary: #b80c09;
 $primary-l: lighten(saturate($primary, 1), 2);
 $primary-d: darken(desaturate($primary, 1), 2);
 
-$background: #1c110a;
-$background-l: lighten(saturate($background, 1), 4);
+$background: #001514;
+$background-l: lighten(saturate($background, 1), 2);
 $background-d: darken(desaturate($background, 1), 2);
 
 $text-color: #f3f4f3;

@@ -13,7 +13,7 @@
           :position="position")
       .cart__total
         .cart__total-label Всего
-        .cart__total-sum {{totalPrice}} ₽
+        .cart__total-sum {{totalCost}} ₽
       order
 </template>
 
@@ -31,7 +31,7 @@ export default {
     Position,
   },
   computed: {
-    ...mapGetters(['totalPrice', 'totalAmount']),
+    ...mapGetters(['totalCost', 'totalAmount']),
     ...mapState(['cart']),
     isCartOpen() {
       return this.$store.state.page.isCartOpen;
@@ -46,7 +46,6 @@ export default {
 <style lang="scss">
 @import "../../styles/_globals";
 .cart {
-  height: 100%;
   display: flex;
   flex-direction: column;
 

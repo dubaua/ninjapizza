@@ -5,7 +5,7 @@
     .card__details
       h2.card__title {{product.title}}
       .card__description(v-html="product.description")
-    .card__status
+    .card__versions
       template(v-if="isSimpleProduct")
         .card__version {{product.measure}}
       template(v-else)
@@ -14,9 +14,10 @@
             .card__version.card__version--clicable(@click="setVersion(version.id)")
               radio(:value="version.id === product.chosenVersion")
               .card__measure {{version.measure}}
-      .card__action
+      .row.row--between.row--middle
         .card__price {{ price }} ₽
-        button.button(@click="addToCart(product)") {{buttonText}}
+        .card__action
+          button.button(@click="addToCart(product)") {{buttonText}}
 </template>
 
 <script>
@@ -114,7 +115,7 @@ export default {
     }
   }
 
-  &__status {
+  &__versions {
     margin-top: auto;
     padding: 0 $base;
   }
@@ -139,13 +140,8 @@ export default {
   }
 
   &__action {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    * + * {
-      margin-left: $base / 2;
-    }
+    perspective: 900px;
+    transform-style: preserve-3d;
   }
 
   &__price {

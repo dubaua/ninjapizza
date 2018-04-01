@@ -12,7 +12,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/_colors";
 @import "../../styles/_globals";
 
 .radio {

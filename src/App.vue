@@ -24,24 +24,35 @@
       )
         cart
       app-footer
+      //- transition(name="fade")
+      //-   .overlay(v-if="somePanelsIsOpen")
     template(v-else)
       aside.desktop-panel
         logo
         info
         navigation
-        cart
+        status
+      transition(name="fade")
+        .cart-overlay(
+          v-if="page.isCartOpen",
+          @click.self="closeCart",
+          )
+          .cart-overlay__cart
+            cart
 </template>
 
 <script>
+// TODO schedule open menu, create overlay, freeze, when overlay is open
 import Banners from '@/components/Banners';
 import Product from '@/components/product';
 import SlideIn from '@/components/SlideIn';
 import Navigation from '@/components/Navigation';
 import Info from '@/components/Info';
 import Cart from '@/components/cart';
+import Status from '@/components/cart/Status';
 import AppFooter from '@/components/AppFooter';
 import Logo from '@/components/Logo';
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'App',
@@ -50,6 +61,7 @@ export default {
     Product,
     SlideIn,
     Cart,
+    Status,
     AppFooter,
     Logo,
     Info,
@@ -57,12 +69,13 @@ export default {
   },
   computed: {
     ...mapState(['page']),
+    ...mapGetters(['somePanelsIsOpen']),
     isMobile() {
       return this.$mq === 'mobile';
     },
   },
   methods: {
-    ...mapActions(['openMenu', 'closeMenu']),
+    ...mapActions(['scheduleAction', 'openMenu', 'closeMenu', 'closeCart']),
   },
 };
 </script>
@@ -85,7 +98,6 @@ export default {
 }
 
 .desktop-panel {
-  background: $background-d;
   position: fixed;
   top: 0;
   left: 0;
@@ -93,5 +105,29 @@ export default {
   right: auto;
   width: 300px;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background: $background-d;
+  border-right: 1px solid $background-l;
+}
+
+.cart-overlay {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 300px;
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($background-d, 0.8);
+
+  &__cart {
+    max-width: 480px;
+    width: 100%;
+    padding: $base 0;
+    background: $background;
+  }
 }
 </style>

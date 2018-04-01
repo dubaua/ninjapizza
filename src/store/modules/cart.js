@@ -15,7 +15,7 @@ const createProduct = p => ({
 
 // getters
 const getters = {
-  totalPrice: state =>
+  totalCost: state =>
     Object.keys(state).reduce((sum, cartId) => sum + state[cartId].price * state[cartId].amount, 0),
   totalAmount: state => Object.keys(state).reduce((sum, cartId) => sum + state[cartId].amount, 0),
   isInCart: state => id => Object.keys(state).some(p => p.indexOf(id) !== -1),
@@ -47,6 +47,9 @@ const mutations = {
   },
   removeFromCart(state, cartId) {
     Vue.delete(state, cartId);
+  },
+  clearCart(state) {
+    Object.keys(state).forEach(cartId => Vue.delete(state, cartId));
   },
   changeAmount(state, { cartId, modifier }) {
     state[cartId].amount += modifier;

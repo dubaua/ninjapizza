@@ -1,10 +1,13 @@
 /* eslint-disable no-shadow */
-
 const state = {
   isMenuOpen: false,
   isCartOpen: false,
   isFrozen: false,
   nextAction: '',
+};
+
+const getters = {
+  somePanelsIsOpen: state => state.isCartOpen || state.isMenuOpen,
 };
 
 const mutations = {
@@ -38,6 +41,10 @@ const actions = {
   toggleCart({ state, commit }) {
     commit('setCart', !state.isCartOpen);
   },
+  closeAll({ commit }) {
+    commit('setCart', false);
+    commit('setMenu', false);
+  },
   scheduleAction({ state, commit, dispatch }, { next, blocking }) {
     if (state[`is${blocking}Open`]) {
       commit('scheduleAction', next);
@@ -56,6 +63,7 @@ const actions = {
 
 export default {
   state,
+  getters,
   mutations,
   actions,
 };

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersist from 'vuex-persist';
 // import { freeze, unfreeze } from '@/utils';
 import products from './modules/products';
 import banners from './modules/banners';
@@ -8,7 +9,20 @@ import page from './modules/page';
 
 Vue.use(Vuex);
 
-const debug = process.env.NODE_ENV !== 'production';
+// const debug = process.env.NODE_ENV !== 'production';
+
+const badMutations = ['setMenu', 'setCart', 'scheduleAction'];
+
+const vuexLocalStorage = new VuexPersist({
+  key: 'vuex',
+  storage: window.localStorage,
+  reducer: state => ({
+    products: state.products,
+    banners: state.banners,
+    cart: state.cart,
+  }),
+  filter: mutation => badMutations.indexOf(mutation.type) === -1,
+});
 
 const store = new Vuex.Store({
   modules: {
@@ -17,7 +31,8 @@ const store = new Vuex.Store({
     cart,
     page,
   },
-  strict: debug,
+  // strict: debug,
+  plugins: [vuexLocalStorage.plugin],
 });
 
 // ТУДУ сделать фриз по открытию панельки и анфриз по закрытию
