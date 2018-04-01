@@ -62,6 +62,14 @@ export default {
   background: $background-d;
   box-shadow: 1px 0 0 $background-l;
 
+  @include breakpoint("sm") {
+    right: 50%;
+  }
+
+  @include breakpoint("lg") {
+    right: 66.67%;
+  }
+
   &__title {
     @include font-montserrat--bold;
     margin: 0 $base $base;
@@ -71,48 +79,12 @@ export default {
     color: $text-color;
     text-align: center;
   }
-}
 
-@include breakpoint("sm") {
-  .slide-in {
-    right: 50%;
+  &__body {
+    flex-grow: 1;
+    max-height: 100%;
+    overflow-y: auto;
+    padding-bottom: $base;
   }
-}
-
-@include breakpoint("lg") {
-  .slide-in {
-    right: 66.67%;
-  }
-}
-
-.slide-from-bottom-enter-active,
-.slide-from-bottom-leave-active,
-.slide-from-left-enter-active,
-.slide-from-left-leave-active,
-.slide-from-right-enter-active,
-.slide-from-right-leave-active,
-.slide-from-top-enter-active,
-.slide-from-top-leave-active {
-  transition: transform $timing;
-}
-
-.slide-from-bottom-enter,
-.slide-from-bottom-leave-to {
-  transform: translate(0, 100%);
-}
-
-.slide-from-left-enter,
-.slide-from-left-leave-to {
-  transform: translate(-100%, 0);
-}
-
-.slide-from-right-enter,
-.slide-from-right-leave-to {
-  transform: translate(100%, 0);
-}
-
-.slide-from-top-enter,
-.slide-from-top-leave-to {
-  transform: translate(0, -100%);
 }
 </style>
