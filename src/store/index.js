@@ -2,10 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
 // import { freeze, unfreeze } from '@/utils';
-import products from './modules/products';
-import banners from './modules/banners';
-import cart from './modules/cart';
-import page from './modules/page';
+import modules from './modules';
 
 Vue.use(Vuex);
 
@@ -25,12 +22,7 @@ const vuexLocalStorage = new VuexPersist({
 });
 
 const store = new Vuex.Store({
-  modules: {
-    products,
-    banners,
-    cart,
-    page,
-  },
+  modules,
   // strict: debug,
   plugins: [vuexLocalStorage.plugin],
 });
