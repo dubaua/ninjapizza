@@ -73,7 +73,10 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['scheduleAction', 'openMenu', 'closeMenu', 'closeCart']),
+    ...mapActions(['scheduleAction', 'closeMenu', 'closeCart']),
+    openMenu() {
+      this.scheduleAction({ next: 'openMenu', blocking: 'Cart' });
+    },
   },
 };
 </script>
