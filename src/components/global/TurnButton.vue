@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/_globals";
+@import "~@/styles/_globals";
 
 .turn-button {
   $block: &;

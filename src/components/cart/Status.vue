@@ -1,6 +1,6 @@
 <template lang="pug">
 .cart-status
-  button.button.button--wide(@click="toggleCart", v-if="totalAmount")
+  base-button(size="wide", @click="toggleCart", v-if="totalAmount")
     | {{cartLabel}}
   template(v-else)
     | Ваша корзина пуста
@@ -12,7 +12,7 @@ import { declOfNum, numberWithSpaces } from '@/utils';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  name: 'AppFooter',
+  name: 'Status',
   components: { Icon },
   computed: {
     ...mapGetters(['totalAmount', 'totalCost']),
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/_globals";
+@import "~@/styles/_globals";
 
 .cart-status {
   margin-top: auto;

@@ -17,21 +17,16 @@
       .row.row--between.row--middle
         .card__price {{ price }} ₽
         .card__action
-          button.button(@click="addToCart(product)") {{buttonText}}
+          base-button(@click="addToCart(product)") {{buttonText}}
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import Radio from '@/components/ui/Radio';
 import { numberWithSpaces } from '@/utils';
 
 /* eslint-disable no-underscore-dangle */
-
 export default {
   name: 'Card',
-  components: {
-    Radio,
-  },
   props: {
     product: Object,
   },
@@ -76,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/_globals";
+@import "~@/styles/_globals";
 
 .card {
   $block: "card";

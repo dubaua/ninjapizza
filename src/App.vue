@@ -45,7 +45,6 @@
 // TODO schedule open menu, create overlay, freeze, when overlay is open
 import Banners from '@/components/Banners';
 import Product from '@/components/product';
-import SlideIn from '@/components/SlideIn';
 import Navigation from '@/components/Navigation';
 import Info from '@/components/Info';
 import Cart from '@/components/cart';
@@ -59,7 +58,6 @@ export default {
   components: {
     Banners,
     Product,
-    SlideIn,
     Cart,
     Status,
     AppFooter,

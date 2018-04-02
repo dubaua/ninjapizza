@@ -2,13 +2,16 @@
   .position
     .position__title {{position.title}} {{position.details}}
     .position__status
-      //- button.button.button--mini(
-      //-   @click="changeAmount({ cartId: position.cartId, modifier: -1})") –
+      base-button(
+        size="mini",
+        @click="changeAmount({ cartId: position.cartId, modifier: -1})") –
       | {{position.amount}}
-      //- button.button.button--mini(
-      //-   @click="changeAmount({ cartId: position.cartId, modifier: 1})") +
+      base-button(
+        size="mini",
+        @click="changeAmount({ cartId: position.cartId, modifier: 1})") +
       | &times; {{position.price}} ₽
-      button.button.button--mini(
+      base-button(
+        size="mini",
         @click="changeAmount({ cartId: position.cartId, modifier: -position.amount})")
           | &times;
 </template>
@@ -28,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/_globals";
+@import "~@/styles/_globals";
 .position {
   margin-bottom: $base;
   &__status {

@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/_globals";
+@import "~@/styles/_globals";
 
 .info {
   padding: $base;

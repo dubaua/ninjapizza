@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/_globals";
+@import "~@/styles/_globals";
 
 .radio {
   min-width: 24px;

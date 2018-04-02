@@ -5,7 +5,7 @@
       :model="model",
       :options="formOptions"
     )
-    button.button.button--wide(:disabled="isSending || isSent") Заказываю
+    base-button(size="wide", :disabled="isSending || isSent") Заказываю
     .form__isSent(v-if="isSent")
       p 🎉 🎉 🎉
       p Ваш заказ отправлен! Скоро вам перезвонит наш менеджер для подтверждения заказа
@@ -135,7 +135,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/_globals";
+@import "~@/styles/_globals";
 
 .form {
   & .form-group + .form-group {

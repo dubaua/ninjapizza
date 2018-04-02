@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/_globals";
+@import "~@/styles/_globals";
 
 .menu {
   &__link {

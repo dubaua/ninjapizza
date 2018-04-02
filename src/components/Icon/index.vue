@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/_globals";
+@import "~@/styles/_globals";
 
 .icon {
   pointer-events: none;
