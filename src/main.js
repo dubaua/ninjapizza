@@ -4,7 +4,7 @@ import Vue from 'vue';
 import VueMq from 'vue-mq';
 import Vue2TouchEvents from 'vue2-touch-events';
 import VueFormGenerator from 'vue-form-generator';
-import '@/components/global';
+import '@/components/globals';
 import '../static/fonts.css';
 import App from './App';
 import router from './router';

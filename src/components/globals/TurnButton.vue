@@ -30,9 +30,9 @@ export default {
     transform-origin: 50% 50% $base * -1.5;
     backface-visibility: hidden;
 
-    & *:focus {
-      outline: none;
-    }
+    // & *:focus {
+    //   outline: none;
+    // }
   }
 
   &__top {

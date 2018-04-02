@@ -17,7 +17,9 @@
       .row.row--between.row--middle
         .card__price {{ price }} ₽
         .card__action
-          base-button(@click="addToCart(product)") {{buttonText}}
+          turn-button(:active="isInCart(product._id)")
+            base-button(@click="addToCart(product)" slot="unactive") {{buttonText}}
+            base-button(@click="addToCart(product)" slot="active") {{buttonText}}
 </template>
 
 <script>
