@@ -3,9 +3,8 @@
 .button {
   @include font-montserrat--medium;
 
-  padding: $base $base * 2;
+  padding: $base;
   border: 0;
-  border-radius: $base / 4;
   background: $primary;
   color: $text-color;
   cursor: pointer;
