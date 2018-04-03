@@ -1,19 +1,26 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import VuexPersist from 'vuex-persist';
+import VuexPersistence from 'vuex-persist';
 import modules from './modules';
 
 Vue.use(Vuex);
 
-const vuexLocalStorage = new VuexPersist({
+const debug = process.env.NODE_ENV !== 'production';
+
+const vuexPersist = new VuexPersistence({
   key: 'vuex',
+  strictMode: debug,
   storage: window.localStorage,
   modules: ['products', 'banners', 'cart'],
 });
 
 const store = new Vuex.Store({
   modules,
-  plugins: [vuexLocalStorage.plugin],
+  strict: debug,
+  mutations: {
+    RESTORE_MUTATION: vuexPersist.RESTORE_MUTATION,
+  },
+  plugins: [vuexPersist.plugin],
 });
 
 const keys = ['pizza', 'desserts', 'drinks', 'salad', 'snack'];
