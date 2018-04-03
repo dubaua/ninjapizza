@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import disableScroll from 'disable-scroll';
 
 export const numberWithSpaces = number => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
@@ -20,14 +19,6 @@ export function removeClassFromElement(el, className) {
       ' ',
     );
   }
-}
-
-export function freeze() {
-  disableScroll.on();
-}
-
-export function unfreeze() {
-  disableScroll.off();
 }
 
 export function declOfNum(n, titles) {

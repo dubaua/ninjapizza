@@ -51,14 +51,12 @@ export default {
 @import "~@/styles/_globals";
 
 .slide-in {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  @include fixed-overlay;
+
   bottom: 56px;
   display: flex;
   flex-direction: column;
-  z-index: 2;
+  z-index: 10;
   background: $background-d;
   box-shadow: 1px 0 0 $background-l;
 

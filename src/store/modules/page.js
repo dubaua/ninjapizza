@@ -7,7 +7,7 @@ const state = {
 };
 
 const getters = {
-  somePanelsIsOpen: state => state.isCartOpen || state.isMenuOpen,
+  isOverlayed: state => state.isCartOpen || state.isMenuOpen,
 };
 
 const mutations = {

@@ -1,3 +1,6 @@
+// refactor this
+// slide-up etc
+
 .slide-from-bottom-enter-active,
 .slide-from-bottom-leave-active,
 .slide-from-left-enter-active,
@@ -39,12 +42,21 @@
   opacity: 0;
 }
 
-.turn-down-enter-active,
-.turn-down-leave-active {
-  transition: transform $timing;
+.fade-up-enter-active,
+.fade-up-leave-active {
+  transition-property: opacity transform;
+  transition-duration: $timing;
 }
 
-.turn-down-enter,
-.turn-down-leave-to {
-  transform: rotateX(-90deg) translateZ(100%);
+.fade-up-enter-active {
+  transition-timing-function: ease-out;
+}
+.fade-up-leave-active {
+  transition-timing-function: ease-in;
+}
+
+.fade-up-enter,
+.fade-up-leave-to {
+  opacity: 0;
+  transform: translate(0, $base * 3);
 }

@@ -6,6 +6,7 @@
     )
       banners
       product
+      overlay
     template(v-if="isMobile")
       slide-in(
         from="left",
@@ -24,8 +25,6 @@
       )
         cart
       app-footer
-      //- transition(name="fade")
-      //-   .overlay(v-if="somePanelsIsOpen")
     template(v-else)
       aside.desktop-panel
         logo
@@ -33,16 +32,11 @@
         navigation
         status
       transition(name="fade")
-        .cart-overlay(
-          v-if="page.isCartOpen",
-          @click.self="closeCart",
-          )
-          .cart-overlay__cart
-            cart
+        .cart-popup(v-if="page.isCartOpen")
+          cart
 </template>
 
 <script>
-// TODO schedule open menu, create overlay, freeze, when overlay is open
 import Banners from '@/components/Banners';
 import Product from '@/components/product';
 import Navigation from '@/components/Navigation';
@@ -93,16 +87,12 @@ export default {
 @include breakpoint("xl") {
   .page {
     margin-left: 300px;
-
     padding-bottom: 0;
   }
 }
 
 .desktop-panel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  @include fixed-overlay;
   right: auto;
   width: 300px;
   z-index: 2;
@@ -112,23 +102,14 @@ export default {
   border-right: 1px solid $background-l;
 }
 
-.cart-overlay {
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 300px;
-  z-index: 1;
+.cart-popup {
   position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba($background-d, 0.8);
-
-  &__cart {
-    max-width: 480px;
-    width: 100%;
-    padding: $base 0;
-    background: $background;
-  }
+  top: 50%;
+  left: calc(50% + 150px);
+  transform: translate(-50%, -50%);
+  max-width: 480px;
+  width: 100%;
+  padding: $base 0;
+  background: $background;
 }
 </style>
