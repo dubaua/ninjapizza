@@ -17,9 +17,9 @@
       .row.row--between.row--middle
         .card__price {{ price }} ₽
         .card__action
-          turn-button(:active="isInCart(product._id)")
-            base-button(@click="addToCart(product)" slot="unactive") {{buttonText}}
-            base-button(@click="addToCart(product)" slot="active") {{buttonText}}
+          turn-button(:active="amountInCart(versionId) > 0")
+            base-button(@click="addToCart(product)" slot="unactive") Беру
+            base-button(@click="addToCart(product)" slot="active") В корзине
 </template>
 
 <script>
@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'isInCart',
+      'amountInCart',
     ]),
     isSimpleProduct() {
       return typeof this.product.versions === 'undefined';
@@ -47,11 +47,8 @@ export default {
     currentProduct() {
       return this.$route.params.productId || 'pizza';
     },
-    buttonText() {
-      if (this.isInCart(this.product._id)) {
-        return 'В корзине';
-      }
-      return 'Беру';
+    versionId() {
+      return this.product._id + (this.isSimpleProduct ? '' : `_ver${this.product.chosenVersion}`);
     },
   },
   methods: {
