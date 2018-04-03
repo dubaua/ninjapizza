@@ -4,11 +4,8 @@
 </template>
 
 <script>
-import Icon from '@/components/icon';
-
 export default {
   name: 'Logo',
-  components: { Icon },
 };
 </script>
 

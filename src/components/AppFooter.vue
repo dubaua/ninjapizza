@@ -12,12 +12,10 @@
 </template>
 
 <script>
-import Icon from '@/components/icon';
 import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'AppFooter',
-  components: { Icon },
   computed: {
     ...mapState(['page']),
     ...mapGetters(['totalAmount']),

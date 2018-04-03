@@ -19,14 +19,12 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
-import Icon from '@/components/icon';
 import Order from '@/components/Order';
 import Position from './Position';
 
 export default {
   name: 'Cart',
   components: {
-    Icon,
     Order,
     Position,
   },

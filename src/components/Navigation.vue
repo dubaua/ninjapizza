@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import Icon from '@/components/icon';
 import { mapActions } from 'vuex';
 
 export default {
@@ -44,7 +43,6 @@ export default {
       ],
     };
   },
-  components: { Icon },
   methods: {
     ...mapActions(['closeMenu']),
   },

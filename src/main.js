@@ -8,12 +8,12 @@ import '@/components/globals';
 import '../static/fonts.css';
 import App from './App';
 import router from './router';
-import store from './store/';
+import store from './store';
+
+Vue.config.productionTip = false;
 
 Vue.use(VueFormGenerator);
 Vue.use(Vue2TouchEvents);
-Vue.config.productionTip = false;
-
 Vue.use(VueMq, {
   breakpoints: {
     mobile: 1200,

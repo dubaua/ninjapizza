@@ -7,13 +7,11 @@
 </template>
 
 <script>
-import Icon from '@/components/icon';
 import { declOfNum, numberWithSpaces } from '@/utils';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Status',
-  components: { Icon },
   computed: {
     ...mapGetters(['totalAmount', 'totalCost']),
     cartLabel() {
