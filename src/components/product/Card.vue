@@ -17,13 +17,13 @@
       .row.row--between.row--middle
         .card__price {{ price }} ₽
         .card__action
-          turn-button(:active="amountInCart(versionId) > 0")
+          turn-button(:active="amount > 0")
             base-button(@click="addToCart(product)" slot="unactive") Беру
-            base-button(@click="addToCart(product)" slot="active") В корзине
+            base-button(@click="addToCart(product)" slot="active") В корзине {{amount}}
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 import { numberWithSpaces } from '@/utils';
 
 /* eslint-disable no-underscore-dangle */
@@ -33,9 +33,6 @@ export default {
     product: Object,
   },
   computed: {
-    ...mapGetters([
-      'amountInCart',
-    ]),
     isSimpleProduct() {
       return typeof this.product.versions === 'undefined';
     },
@@ -49,6 +46,9 @@ export default {
     },
     versionId() {
       return this.product._id + (this.isSimpleProduct ? '' : `_ver${this.product.chosenVersion}`);
+    },
+    amount() {
+      return this.$store.getters.amountInCart(this.versionId);
     },
   },
   methods: {
