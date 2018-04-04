@@ -9,7 +9,7 @@
       overlay
     template(v-if="isMobile")
       slide-in(
-        from="left",
+        direction="right",
         :isActive="page.isMenuOpen",
         swipeAction="closeMenu",
         title="Меню",
@@ -18,7 +18,7 @@
           navigation
           info
       slide-in(
-        from="bottom",
+        direction="up",
         :isActive="page.isCartOpen",
         swipeAction="closeCart",
         title="Корзина",

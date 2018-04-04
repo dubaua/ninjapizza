@@ -2,10 +2,10 @@
   transition(:name="transitionName" @after-leave="dispatchNext")
     aside.slide-in(
       v-if="isActive",
-      v-touch:swipe.top="from === 'top' && swipeAction ? onSwipe : null",
-      v-touch:swipe.left="from === 'left' && swipeAction ? onSwipe : null",
-      v-touch:swipe.right="from === 'right' && swipeAction ? onSwipe : null",
-      v-touch:swipe.bottom="from === 'bottom' && swipeAction ? onSwipe : null",
+      v-touch:swipe.top="direction === 'down' && swipeAction ? onSwipe : null",
+      v-touch:swipe.left="direction === 'right' && swipeAction ? onSwipe : null",
+      v-touch:swipe.right="direction === 'left' && swipeAction ? onSwipe : null",
+      v-touch:swipe.bottom="direction === 'up' && swipeAction ? onSwipe : null",
     )
       h1.slide-in__title(v-if="title") {{ title }}
       div.slide-in__body
@@ -18,10 +18,10 @@ import { mapActions } from 'vuex';
 export default {
   name: 'SlideIn',
   props: {
-    from: {
+    direction: {
       requred: true,
       type: String,
-      default: 'left',
+      default: 'right',
     },
     isActive: {
       requred: true,
@@ -35,7 +35,7 @@ export default {
       return this.$mq === 'mobile';
     },
     transitionName() {
-      return `slide-from-${this.from}`;
+      return `slide-${this.direction}`;
     },
   },
   methods: {
