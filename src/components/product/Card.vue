@@ -79,7 +79,7 @@ export default {
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
-  padding-bottom: 1em;
+  padding: 2em 2em 1em;
 
   &__preview {
     & img {

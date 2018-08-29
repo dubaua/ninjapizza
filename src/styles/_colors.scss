@@ -3,8 +3,8 @@ $primary: #b80c09;
 $primary-l: lighten(saturate($primary, 1), 2);
 $primary-d: darken(desaturate($primary, 1), 2);
 
-$background: #001514;
+$background: white;
 $background-l: lighten(saturate($background, 1), 2);
 $background-d: darken(desaturate($background, 1), 2);
 
-$text-color: #f3f4f3;
+$text-color: #001514;
