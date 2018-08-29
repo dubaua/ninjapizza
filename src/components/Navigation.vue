@@ -2,8 +2,7 @@
   .menu
     template(v-for="link in menu")
       router-link(:to="link.to", @click.native="closeMenu").menu__link
-        .menu__icon
-          icon(:glyph="link.glyph", :width="32", :height="32")
+        icon(:glyph="link.glyph", :width="32", :height="32").menu__icon
         .menu__label {{link.label}}
 </template>
 
@@ -56,21 +55,21 @@ export default {
   &__link {
     display: flex;
     align-items: center;
+    padding: $base * 0.5 $base * 1.5;
+    font-weight: 500;
     text-decoration: none;
-    padding: $base*0.5 $base*1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $color-text--contrast;
 
     &.router-link-exact-active {
-      background: $background;
-    }
-
-    & * + * {
-      margin-left: $base * 1.5;
+      color: $color-text;
+      background: $color-background;
     }
   }
 
   &__label {
-    color: $text-color;
-    text-transform: uppercase;
+    margin-left: $base * 1.5;
   }
 }
 </style>

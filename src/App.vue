@@ -98,8 +98,8 @@ export default {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  background: $background-d;
-  border-right: 1px solid $background-l;
+  background: $color-background--contrast;
+  color: $color-text--contrast;
 }
 
 .cart-popup {
@@ -110,6 +110,6 @@ export default {
   max-width: 480px;
   width: 100%;
   padding: $base 0;
-  background: $background;
+  background: $color-background;
 }
 </style>

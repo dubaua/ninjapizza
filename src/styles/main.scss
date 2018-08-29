@@ -4,15 +4,22 @@
 @import "_transitions";
 
 html {
-  background: $background;
-  color: $text-color;
+  background: $color-background;
+  color: $color-text;
   font-family: $font-montserrat;
 }
 
-.logo-primary {
-  fill: $text-color;
+.color-text {
+  color: $color-text;
+  fill: $color-text;
 }
 
-.logo-secondary {
-  fill: $primary;
+.color-primary {
+  color: $color-primary;
+  fill: $color-primary;
+}
+
+.color-text--contrast {
+  color: $color-text--contrast;
+  fill: $color-text--contrast;
 }

@@ -41,25 +41,27 @@ export default {
   padding: 4px 0;
   right: 0;
   z-index: 10;
-
   display: flex;
   justify-content: space-between;
-
-  background: $background;
-  box-shadow: 0 -1px 0 $background-l;
+  background: $color-background;
 
   &__button {
-    max-width: $base*4;
-    flex-basis: $base*4;
+    max-width: $base * 4;
+    flex-basis: $base * 4;
     text-align: center;
     border: 0;
     background: none;
     padding: 0;
     margin: 0;
+
+    & .icon {
+      fill: $color-text;
+    }
   }
   &__logo {
     flex-grow: 1;
     text-align: center;
+    color: $color-text;
   }
 }
 
@@ -74,9 +76,8 @@ export default {
     height: 13px;
     padding: 1px;
     border-radius: 50%;
-
-    color: $text-color;
-    background: $primary;
+    color: $color-text--contrast;
+    background: $color-primary;
     font-weight: 500;
     font-size: 10px;
     line-height: 13px;

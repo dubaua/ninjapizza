@@ -3,27 +3,27 @@
 .button {
   @include font-montserrat--medium;
 
-  padding: $base;
+  padding: $base * 0.62 $base;
   border: 0;
-  background: $primary;
-  color: $text-color;
+  background: $color-primary;
+  color: $color-text--contrast;
   cursor: pointer;
   font-weight: bold;
   line-height: 1;
-  min-width: 170px;
+  min-width: 140px;
   text-align: center;
   transition: $timing-fast;
 
   &:hover {
-    background: $primary-l;
+    background: $color-primary-l;
   }
 
   &:active {
-    background: $primary-d;
+    background: $color-primary-d;
   }
 
   &:disabled {
-    background: desaturate($primary, 100%);
+    background: desaturate($color-primary, 100%);
     cursor: not-allowed;
   }
 

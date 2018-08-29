@@ -27,7 +27,7 @@ export default {
 
   &__side {
     transition: transform $timing;
-    transform-origin: 50% 50% $base * -1.5;
+    transform-origin: 50% 50% $base / -0.9;
     backface-visibility: hidden;
 
     // & *:focus {
