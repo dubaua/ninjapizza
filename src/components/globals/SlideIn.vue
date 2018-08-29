@@ -57,8 +57,8 @@ export default {
   display: flex;
   flex-direction: column;
   z-index: 10;
-  background: $background-d;
-  box-shadow: 1px 0 0 $background-l;
+  color: $color-text--contrast;
+  background: $color-background--contrast;
 
   @include breakpoint("sm") {
     right: 50%;
@@ -72,9 +72,8 @@ export default {
     @include font-montserrat--bold;
     margin: 0 $base $base;
     padding: $base 0;
-    box-shadow: 0 1px 0 $background-l;
     font-size: $base;
-    color: $text-color;
+    color: $color-text;
     text-align: center;
   }
 

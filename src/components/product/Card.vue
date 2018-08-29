@@ -79,7 +79,7 @@ export default {
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
-  padding-bottom: 1em;
+  padding: 2em 2em 3em;
 
   &__preview {
     & img {
@@ -96,7 +96,6 @@ export default {
   &__title {
     @include font-montserrat--bold();
     font-size: $base;
-
     margin: $base 0;
   }
 

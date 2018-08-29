@@ -1,10 +1,13 @@
-// $primary: #f15025;
-$primary: #b80c09;
-$primary-l: lighten(saturate($primary, 1), 2);
-$primary-d: darken(desaturate($primary, 1), 2);
+// $color-primary: #f15025;
+$color-primary: hsl(1, 91%, 38%);
+$color-primary-l: lighten(saturate($color-primary, 1), 2);
+$color-primary-d: darken(desaturate($color-primary, 1), 2);
 
-$background: #001514;
-$background-l: lighten(saturate($background, 1), 2);
-$background-d: darken(desaturate($background, 1), 2);
+$color-text: hsl(1, 92%, 5%);
+$color-text--contrast: white;
 
-$text-color: #f3f4f3;
+$color-background: white;
+$color-background-l: red;
+$color-background-d: darken(desaturate($color-background, 1), 2);
+
+$color-background--contrast: hsl(1, 20%, 5%);

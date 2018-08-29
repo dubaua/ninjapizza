@@ -37,6 +37,7 @@ export default {
 .overlay {
   @include fixed-overlay;
 
-  background: rgba($background-d, 0.8);
+  background: rgba($color-background--contrast, 0.9);
+  backdrop-filter: blur(5px);
 }
 </style>

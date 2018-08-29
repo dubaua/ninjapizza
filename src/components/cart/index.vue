@@ -54,7 +54,7 @@ export default {
   }
 
   &__empty-icon svg {
-    fill: $background-l;
+    fill: $color-background-l;
   }
 
   &__filled {
@@ -64,12 +64,12 @@ export default {
   &__total {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid $text-color;
+    border-top: 1px solid $color-text;
     margin: $base 0;
     padding-top: $base;
   }
   &__total-sum {
-    padding-right: $base*1.5;
+    padding-right: $base * 1.5;
   }
 }
 </style>

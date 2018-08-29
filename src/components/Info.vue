@@ -15,7 +15,7 @@ export default {
 
 .info {
   padding: $base;
-  background: $background;
+  background: $color-background;
 
   @include breakpoint("lg") {
     background: none;

@@ -155,7 +155,7 @@ export default {
     box-sizing: border-box;
     padding: $base/2;
     width: 100%;
-    background: $text-color;
+    background: $color-text;
     border: 0;
     border-radius: $base/4;
   }

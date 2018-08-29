@@ -34,6 +34,6 @@ export default {
 .icon {
   pointer-events: none;
   display: inline-block;
-  fill: $text-color;
+  fill: currentColor;
 }
 </style>
