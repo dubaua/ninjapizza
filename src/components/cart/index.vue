@@ -69,7 +69,7 @@ export default {
     padding-top: $base;
   }
   &__total-sum {
-    padding-right: $base * 1.5;
+    padding-right: $base * 2.5;
   }
 }
 </style>

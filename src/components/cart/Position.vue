@@ -36,6 +36,9 @@ export default {
   margin-bottom: $base;
   &__status {
     text-align: right;
+    * {
+      margin: 0 $base * 0.5;
+    }
   }
 }
 </style>

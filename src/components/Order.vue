@@ -155,8 +155,8 @@ export default {
     box-sizing: border-box;
     padding: $base/2;
     width: 100%;
-    background: $color-text;
-    border: 0;
+    background: $color-background;
+    border: 1px solid $color-unactive;
     border-radius: $base/4;
   }
   & textarea {

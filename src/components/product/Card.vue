@@ -2,24 +2,21 @@
   .card
     .card__preview
       img(:src="product.photo.path", :alt="product.title")
-    .card__details
-      h2.card__title {{product.title}}
-      .card__description(v-html="product.description")
-    .card__versions
-      template(v-if="isSimpleProduct")
-        .card__version {{product.measure}}
-      template(v-else)
-        .row
-          .col.col-xs-6(v-for="version in product.versions")
-            .card__version.card__version--clicable(@click="setVersion(version.id)")
-              radio(:value="version.id === product.chosenVersion")
-              .card__measure {{version.measure}}
+    h2.card__title {{product.title}}
+    .card__description(v-html="product.description")
+    .card__measure(v-if="isSimpleProduct") {{product.measure}}
+    .card__button-group(v-else)
+      .card__button(
+        v-for="version in product.versions",
+        @click="setVersion(version.id)",
+        :class="{'card__button--active': version.id === product.chosenVersion}")
+          | {{version.measure}}
+    .card__action
       .row.row--between.row--middle
         .card__price {{ price }} ₽
-        .card__action
-          turn-button(:active="amount > 0")
-            base-button(@click="addToCart(product)" slot="unactive") Беру
-            base-button(@click="addToCart(product)" slot="active") В корзине {{amount}}
+        turn-button(:active="amount > 0")
+          base-button(@click="addToCart(product)" slot="unactive") Беру
+          base-button(@click="addToCart(product)" slot="active") В корзине {{amount}}
 </template>
 
 <script>
@@ -89,10 +86,6 @@ export default {
     }
   }
 
-  &__details {
-    padding: 0 $base;
-  }
-
   &__title {
     @include font-montserrat--bold();
     font-size: $base;
@@ -103,8 +96,8 @@ export default {
     font-weight: normal;
     line-height: 1.3;
 
-    * {
-      margin: $base 0 0;
+    p {
+      margin-top: 0;
     }
   }
 
@@ -117,22 +110,32 @@ export default {
     font-weight: normal;
   }
 
-  &__version {
-    display: flex;
-    align-items: center;
+  &__measure {
     padding-bottom: $base;
     padding-top: $base;
+  }
 
-    * + * {
-      margin-left: $base / 2;
-    }
+  &__button-group {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: $base;
+  }
 
-    &--clicable {
-      cursor: pointer;
+  &__button {
+    flex-grow: 1;
+    text-align: center;
+    padding: $base/4 0;
+    cursor: pointer;
+    background: $color-unactive;
+
+    &--active {
+      background: $color-primary;
+      color: $color-text--contrast;
     }
   }
 
   &__action {
+    margin-top: auto;
     perspective: 900px;
     transform-style: preserve-3d;
   }
