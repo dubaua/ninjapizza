@@ -76,7 +76,7 @@ export default {
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
-  padding: 2em 2em 3em;
+  padding: $base * 2;
 
   &__preview {
     & img {
@@ -124,13 +124,16 @@ export default {
   &__button {
     flex-grow: 1;
     text-align: center;
-    padding: $base/4 0;
+    padding: $base/2 0;
     cursor: pointer;
-    background: $color-unactive;
+    border: 1px solid transparent;
+    background: $color-background-unactive;
+    color: $color-unactive;
 
     &--active {
-      background: $color-primary;
-      color: $color-text--contrast;
+      color: $color-primary;
+      background: none;
+      border-color: $color-primary;
     }
   }
 

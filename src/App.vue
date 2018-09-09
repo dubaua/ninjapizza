@@ -4,7 +4,6 @@
       v-touch:swipe.right="openMenu",
       v-touch:swipe.left="closeMenu",
     )
-      banners
       product
       overlay
     template(v-if="isMobile")
@@ -37,7 +36,6 @@
 </template>
 
 <script>
-import Banners from '@/components/Banners';
 import Product from '@/components/product';
 import Navigation from '@/components/Navigation';
 import Info from '@/components/Info';
@@ -50,7 +48,6 @@ import { mapState, mapActions, mapGetters } from 'vuex';
 export default {
   name: 'App',
   components: {
-    Banners,
     Product,
     Cart,
     Status,

@@ -22,7 +22,8 @@ const getters = {
 // actions
 const actions = {
   fetchProductsByKey({ commit }, key) {
-    api.get(key).then(products => commit('setProducts', { products, key }));
+    // fetch also descriptiuons
+    api.getProductsByKey(key).then(products => commit('setProducts', { products, key }));
   },
 };
 

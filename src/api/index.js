@@ -18,10 +18,15 @@ const prepareProduct = (product) => {
   };
 };
 
-const get = key =>
+const getProductsByKey = key =>
   fetch(`/cockpit/api/collections/get/${key}?token=${process.env.API_KEY}`)
     .then(response => response.json())
     .then(blob => blob.entries.map(prepareProduct));
+
+const getProductDescriptionByKey = key =>
+  fetch(`/cockpit/api/regions/data/${key}?token=${process.env.API_KEY}`)
+    .then(response => response.json())
+    .then(blob => blob);
 
 const sendForm = form =>
   fetch('/order/', {
@@ -47,4 +52,4 @@ const saveOrder = order =>
     .then(response => response.json())
     .then(blob => blob);
 
-export default { get, sendForm, saveOrder };
+export default { getProductsByKey, getProductDescriptionByKey, sendForm, saveOrder };

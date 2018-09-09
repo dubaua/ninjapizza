@@ -11,7 +11,7 @@ const vuexPersist = new VuexPersistence({
   key: 'vuex',
   strictMode: debug,
   storage: window.localStorage,
-  modules: ['products', 'banners', 'cart'],
+  modules: ['products', 'productDescription', 'cart'],
 });
 
 const store = new Vuex.Store({
@@ -24,7 +24,12 @@ const store = new Vuex.Store({
 });
 
 const keys = ['pizza', 'desserts', 'drinks', 'salad', 'snack'];
-keys.map(key => store.dispatch('fetchProductsByKey', key));
-store.dispatch('fetchBanners');
+
+keys.forEach((key) => {
+  Promise.all([
+    store.dispatch('fetchProductsByKey', key),
+    store.dispatch('fetchProductDescriptionByKey', key),
+  ]);
+});
 
 export default store;

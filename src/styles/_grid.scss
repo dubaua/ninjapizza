@@ -49,6 +49,12 @@ $grid-breakpoints: (
       flex-basis: percentage($i / $columns);
       max-width: percentage($i / $columns);
     }
+    .order-#{$i} {
+      order: $i;
+    }
+    .order-#{$size}-#{$i} {
+      order: $i;
+    }
   }
 }
 

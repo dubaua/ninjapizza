@@ -73,7 +73,6 @@ export default {
     margin: 0 $base $base;
     padding: $base 0;
     font-size: $base;
-    color: $color-text;
     text-align: center;
   }
 

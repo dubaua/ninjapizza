@@ -6,7 +6,8 @@ $color-primary-d: darken(desaturate($color-primary, 1), 2);
 $color-text: hsl(1, 92%, 5%);
 $color-text--contrast: white;
 
-$color-unactive: hsl(1, 10%, 90%);
+$color-unactive: hsl(1, 10%, 65%);
+$color-background-unactive: hsl(1, 10%, 95%);
 
 $color-background: white;
 $color-background-l: red;
