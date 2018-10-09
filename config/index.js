@@ -9,18 +9,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/cockpit/api': {
+      '/cockpit': {
         target: 'http://ninjapizza.dubaua.ru/',
         changeOrigin: true,
         pathRewrite: {
-          '^/cockpit/api': '/cockpit/api',
-        },
-      },
-      '/storage': {
-        target: 'http://ninjapizza.dubaua.ru/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/storage': '/storage',
+          '^/cockpit': '/cockpit',
         },
       },
       '/order': {
