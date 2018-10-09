@@ -11,8 +11,6 @@ $color-unactive: hsl($hue, 10%, 65%);
 $color-background-unactive: hsl($hue, 10%, 95%);
 
 $color-background: white;
-$color-background-l: red;
-$color-background-d: darken(desaturate($color-background, 1), 2);
 
 $color-background--contrast: hsl($hue, 20%, 5%);
 $color-background--panel: hsl($hue, 2%, 64%);

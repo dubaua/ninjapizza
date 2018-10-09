@@ -158,6 +158,11 @@ export default {
     background: $color-background;
     border: 1px solid $color-unactive;
     border-radius: $base/4;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
   }
   & textarea {
     display: block;
