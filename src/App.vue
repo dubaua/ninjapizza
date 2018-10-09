@@ -95,8 +95,9 @@ export default {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  background: $color-background--contrast;
-  color: $color-text--contrast;
+  background: $color-background;
+  color: $color-text;
+  box-shadow: inset -1px 0 0 transparentize($color-unactive, 0.67);
 }
 
 .cart-popup {

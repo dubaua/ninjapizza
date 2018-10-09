@@ -60,11 +60,11 @@ export default {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: $color-text--contrast;
+    color: $color-text;
 
     &.router-link-exact-active {
-      color: $color-text;
-      background: $color-background;
+      color: $color-text--contrast;
+      background: $color-primary;
     }
   }
 

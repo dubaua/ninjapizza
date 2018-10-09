@@ -6,7 +6,7 @@
           h1.shop-section__title {{description.title}}
           .shop-section__description(v-html="description.content")
       .col.col-xs-12.col-lg-8.order-lg-1.col-xxl-6
-        .shop-section__preview
+        .shop-section__preview(v-if="description.image")
           img(:src="description.image.path", :alt="description.title").shop-section__image
     .row
       template(v-if="products")
