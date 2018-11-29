@@ -57,8 +57,8 @@ export default {
   display: flex;
   flex-direction: column;
   z-index: 10;
-  color: $color-text--contrast;
-  background: $color-background--contrast;
+  color: $color-text;
+  background: $color-background;
 
   @include breakpoint("sm") {
     right: 50%;

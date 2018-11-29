@@ -3,7 +3,7 @@
 .button {
   @include font-montserrat--medium;
 
-  padding: $base * 0.62 $base;
+  padding: $base * 0.62 $base * 0.5;
   border: 0;
   background: $color-primary;
   color: $color-text--contrast;

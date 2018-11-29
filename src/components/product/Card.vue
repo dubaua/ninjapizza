@@ -5,18 +5,19 @@
     h2.card__title {{product.title}}
     .card__description(v-html="product.description")
     .card__measure(v-if="isSimpleProduct") {{product.measure}}
-    .card__button-group(v-else)
-      .card__button(
+    .card__switch(v-else)
+      .card__option(
         v-for="version in product.versions",
         @click="setVersion(version.id)",
-        :class="{'card__button--active': version.id === product.chosenVersion}")
+        :class="{'card__option--active': version.id === product.chosenVersion}")
           | {{version.measure}}
     .card__action
       .row.row--between.row--middle
-        .card__price {{ price }} ₽
-        turn-button(:active="amount > 0")
-          base-button(@click="addToCart(product)" slot="unactive") Беру
-          base-button(@click="addToCart(product)" slot="active") В корзине {{amount}}
+        .col.col-xs-6.card__price {{ price }} ₽
+        .col.col-xs-6
+          turn-button(:active="amount > 0")
+            base-button(@click="addToCart(product)" slot="unactive").button--wide Беру
+            base-button(@click="addToCart(product)" slot="active").button--wide В корзине {{amount}}
 </template>
 
 <script>
@@ -115,24 +116,28 @@ export default {
     padding-top: $base;
   }
 
-  &__button-group {
+  &__switch {
     display: flex;
     flex-wrap: nowrap;
     margin-bottom: $base;
   }
 
-  &__button {
+  &__option {
     flex-grow: 1;
-    text-align: center;
-    padding: $base/2 0;
-    cursor: pointer;
-    border: 1px solid transparent;
-    background: $color-background-unactive;
+    padding: $base * 0.33 0;
+    font-size: $base * 0.75;
+    border-bottom: 2px solid $color-background-unactive;
+    /* background: $color-background-unactive; */
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.05em;
     color: $color-unactive;
+    cursor: pointer;
+    text-align: center;
 
     &--active {
       color: $color-primary;
-      background: none;
+      background: $color-background;
       border-color: $color-primary;
     }
   }
